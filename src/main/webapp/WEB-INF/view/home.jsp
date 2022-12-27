@@ -65,16 +65,28 @@
 	
 	</script>
 	
-	
-	<div style="text-align : center;" id="size_site"><img src="/img/size_site.png"></div>
-	<div style="text-align : center;">
-		<div id="site"><img src="/img/check_site.png"></div>
-		<div id="site"><img src="/img/drama_site.png"></div>
-		<div id="site"><img src="/img/cashmere_site.png"></div>
-		<div id="site"><img src="/img/outer_site.png"></div>
+	<br>
+	<div class="size_site" style="text-align : center;"><img src="/img/site_img/size_site.png"></div><br>
+	<div class="site_all" >
+			<div class="site"><img src="/img/site_img/check_site.png">
+				<div class="site_main">12월에도 매일 만나요</div><div>app으로 매일 출석체크 하세요</div><div>최대 20% 쿠폰 지급!</div></div>
+				
+			<div class="site"><img src="/img/site_img/drama_site.png"><br>
+				<div class="site_main">셋셋남녀 AWARDS</div><div>공감 코미디 시트콤 부문 1위!</div><div>셋셋남녀 완결 기념 어워즈 이벤트 GO!</div></div>
+				
+			<div class="site"><img src="/img/site_img/cashmere_site.png"><br>
+				<div class="site_main">우아하게 겨울나기</div><div>캐시 100%부터 블렌드까지</div><div>합리적으로 즐기는 캐시미어 아이템</div></div>
+				
+			<div class="site"><img src="/img/site_img/outer_site.png"><br>
+				<div class="site_main">내가 찾던 #아우터</div><div>눈이와도 가볍고 따뜻하게!</div><div>TMAKER와 함께하는 설레는 겨울</div></div>
 	</div>
 
+	<div class=main2>
+		<div><span>고객님을 위한 추천 상품</span><span>12 items</span><button>←</button><span>2/2</span><button>→</button></div>
+		<div></div>
 	
+	
+	</div>
 	
 <!-- 하단 메뉴 -->
 <%@ include file="/WEB-INF/view/include/footer.jsp" %>

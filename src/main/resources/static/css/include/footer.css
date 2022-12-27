@@ -1,3 +1,5 @@
-.footer_content {
-	position: relative;
+.footer_content{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }

@@ -1,0 +1,34 @@
+header {
+	width: 100%;
+	height: 180px;
+	background: rgb(255, 255, 255);
+	position: fixed;
+}
+
+#header {
+	width: 1600px;
+	margin: 20 auto;
+}
+
+header img {
+	width: 200px;
+}
+
+
+#site{
+	float: right;
+}
+
+#search_item {
+	float: right;
+	width: 1600px;
+}
+
+#menu {
+	margin: 20 auto;
+	width: 1600px;
+}
+
+#login {
+	float: right;
+}

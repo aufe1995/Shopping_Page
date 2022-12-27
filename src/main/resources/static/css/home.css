@@ -1,0 +1,25 @@
+.swiper-container {
+	height:600px;
+	border:2px solid silver;
+	border-radius:7px;
+	box-shadow:0 0 20px #ccc inset;
+}
+
+.swiper-slide {
+	text-align:center;
+	display:flex; 
+	align-items:center; 
+	justify-content:center; 
+}
+
+.swiper-slide img {
+	box-shadow:0 0 5px #555;
+	max-width:3000px;
+}
+
+.size_site {
+	width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}

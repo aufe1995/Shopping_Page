@@ -1,8 +1,6 @@
 .swiper-container {
 	height:600px;
-	border:2px solid silver;
-	border-radius:7px;
-	box-shadow:0 0 20px #ccc inset;
+	position: relative;
 }
 
 .swiper-slide {
@@ -13,11 +11,10 @@
 }
 
 .swiper-slide img {
-	box-shadow:0 0 5px #555;
 	max-width:3000px;
 }
 
-.site_all{
+.main2{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -28,10 +25,28 @@
 	height: 350px;
 }
 
-.site_main {
+.main2_str {
 	font-weight: bold;
 	font-family: 견고딕;
 	font-size:20pt;
 	margin-top:7px;
 	margin-bottom:7px;
+}
+
+.main3_title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.main3{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.clothes {
+	margin: 6px;
+	height: 380px;
 }

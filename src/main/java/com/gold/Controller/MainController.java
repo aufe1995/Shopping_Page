@@ -10,5 +10,10 @@ public class MainController {
 	public String index() {
 		return "home";
 	}
+	
+	@GetMapping("/otherpage")
+	public String otherpage() {
+		return "otherpage";
+	}
 
 }

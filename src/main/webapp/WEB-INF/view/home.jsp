@@ -66,27 +66,37 @@
 	</script>
 	
 	<br>
-	<div class="size_site" style="text-align : center;"><img src="/img/site_img/size_site.png"></div><br>
-	<div class="site_all" >
-			<div class="site"><img src="/img/site_img/check_site.png">
-				<div class="site_main">12월에도 매일 만나요</div><div>app으로 매일 출석체크 하세요</div><div>최대 20% 쿠폰 지급!</div></div>
+	<div class="main1" style="text-align : center;"><img src="/img/site_img/size_site.png" alt="이미지"></div><br>
+	<div class="main2" >
+			<div class="site"><img src="/img/site_img/check_site.png" alt="이미지">
+				<div class="main2_str">12월에도 매일 만나요</div><div>app으로 매일 출석체크 하세요</div><div>최대 20% 쿠폰 지급!</div></div>
 				
-			<div class="site"><img src="/img/site_img/drama_site.png"><br>
-				<div class="site_main">셋셋남녀 AWARDS</div><div>공감 코미디 시트콤 부문 1위!</div><div>셋셋남녀 완결 기념 어워즈 이벤트 GO!</div></div>
+			<div class="site"><img src="/img/site_img/drama_site.png" alt="이미지"><br>
+				<div class="main2_str">셋셋남녀 AWARDS</div><div>공감 코미디 시트콤 부문 1위!</div><div>셋셋남녀 완결 기념 어워즈 이벤트 GO!</div></div>
 				
-			<div class="site"><img src="/img/site_img/cashmere_site.png"><br>
-				<div class="site_main">우아하게 겨울나기</div><div>캐시 100%부터 블렌드까지</div><div>합리적으로 즐기는 캐시미어 아이템</div></div>
+			<div class="site"><img src="/img/site_img/cashmere_site.png" alt="이미지"><br>
+				<div class="main2_str">우아하게 겨울나기</div><div>캐시 100%부터 블렌드까지</div><div>합리적으로 즐기는 캐시미어 아이템</div></div>
 				
-			<div class="site"><img src="/img/site_img/outer_site.png"><br>
-				<div class="site_main">내가 찾던 #아우터</div><div>눈이와도 가볍고 따뜻하게!</div><div>TMAKER와 함께하는 설레는 겨울</div></div>
+			<div class="site"><img src="/img/site_img/outer_site.png" alt="이미지"><br>
+				<div class="main2_str">내가 찾던 #아우터</div><div>눈이와도 가볍고 따뜻하게!</div><div>TMAKER와 함께하는 설레는 겨울</div></div>
 	</div>
+	
+	<br><br><br>
 
-	<div class=main2>
-		<div><span>고객님을 위한 추천 상품</span><span>12 items</span><button>←</button><span>2/2</span><button>→</button></div>
-		<div></div>
-	
-	
+	<div class="main3_title">
+		<div class="right_side"><div>고객님을 위한 추천 상품</div><div>12 items</div></div>
+		<div class="left_side"><button style="float:left">←</button><div style="float:left">2/2</div><button style="float:left">→</button></div>
 	</div>
+		
+		<div class="main3">
+			<div class="clothes"><img alt="이미지" src="/img/main2_img/clothes1.png"><div>카테고리</div><div>물품이름</div><span>가격 </span><span>할인전가격 </span><span>할인 퍼센트</span></div>
+			<div class="clothes"><img alt="이미지" src="/img/main2_img/clothes2.png"><div>카테고리</div><div>물품이름</div><span>가격 </span><span>할인전가격 </span><span>할인 퍼센트</span></div>
+			<div class="clothes"><img alt="이미지" src="/img/main2_img/clothes3.png"><div>카테고리</div><div>물품이름</div><span>가격 </span><span>할인전가격 </span><span>할인 퍼센트</span></div>
+			<div class="clothes"><img alt="이미지" src="/img/main2_img/clothes4.png"><div>카테고리</div><div>물품이름</div><span>가격 </span><span>할인전가격 </span><span>할인 퍼센트</span></div>
+			<div class="clothes"><img alt="이미지" src="/img/main2_img/clothes5.png"><div>카테고리</div><div>물품이름</div><span>가격 </span><span>할인전가격 </span><span>할인 퍼센트</span></div>
+			<div class="clothes"><img alt="이미지" src="/img/main2_img/clothes6.png"><div>카테고리</div><div>물품이름</div><span>가격 </span><span>할인전가격 </span><span>할인 퍼센트</span></div>
+		</div>
+
 	
 <!-- 하단 메뉴 -->
 <%@ include file="/WEB-INF/view/include/footer.jsp" %>

@@ -2,37 +2,32 @@
     pageEncoding="UTF-8"%>
     
 
-	<header>
-		<div id="header">
-			<a href="/"><img src="/img/logo.png" alt="이미지"> </a>
-				<nav id="site">
-					<button>ZIOZIA</button>
-					<button>AND Z</button>
-					<button>OLZEN</button>
-					<button>EDITION</button>
-					<button>TOPTEN10</button>
-					<button>POLHAM</button>
-					<button>PROJECT M</button>
-					<button>TMAKER</button>
-					<button>TOPTEN KIDS</button>
-					<button>POLHAM KIDS</button>
+	<div class="header">
+		<div class="header1">
+			<a href="/"><img src="/img/logo.png" alt="이미지" onclick="location.href='/'"> </a>
+				<nav id="otherpage">
+					<button onclick="location.href='/otherpage'">ZIOZIA</button>
+					<button onclick="location.href='/otherpage'">AND Z</button>
+					<button onclick="location.href='/otherpage'">OLZEN</button>
+					<button onclick="location.href='/otherpage'">EDITION</button>
+					<button onclick="location.href='/otherpage'">TOPTEN10</button>
+					<button onclick="location.href='/otherpage'">POLHAM</button>
+					<button onclick="location.href='/otherpage'">PROJECT M</button>
+					<button onclick="location.href='/otherpage'">TMAKER</button>
+					<button onclick="location.href='/otherpage'">TOPTEN KIDS</button>
+					<button onclick="location.href='/otherpage'">POLHAM KIDS</button>
 				</nav>
 		</div>
 		
-		<br>
 		
+		<div style="width:87%">
+			<div class="search_item"><input type="text" placeholder="검색어를 입력하세요." name="item">
+				<button>검색</button></div>
+		</div>
 		
-		<span id="search_item">
-			<span>
-				<input type="text" placeholder="검색어를 입력하세요." name="item">
-				<button>검색</button>
-			</span>
-		</span>
-		
-		<br>
+
 			
-			
-		<div id="menu">
+		<div class="menu">
 			<div>
 				<button>EES</button>
 				<button>CAFE위크</button>
@@ -53,4 +48,4 @@
 		
 
 
-	</header>
+	</div>

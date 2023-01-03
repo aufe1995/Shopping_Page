@@ -40,7 +40,7 @@
 				<button>이벤트</button>
 				<button>베스트리뷰</button>
 				<nav id="login">
-				<button>LOGIN</button>
+				<button onclick="location.href='/login'">LOGIN</button>
 				<button>CART</button>
 				</nav>
 			</div>

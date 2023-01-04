@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gold.mappers.UserMapper">
+    <insert id="saveUser" parameterType="com.gold.user.UserVO">
+        INSERT INTO USER (user_id, user_pw, user_name, user_phone, user_rrn, user_email, user_adr)
+        VALUES(#{userID},#{userPW},#{userName},#{userPhone},#{userRRN},#{userEmail},#{userADR});
+    </insert>
+</mapper>

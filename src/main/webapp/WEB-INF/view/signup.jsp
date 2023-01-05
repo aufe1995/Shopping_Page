@@ -32,11 +32,6 @@
                 <input type="text" placeholder="이름" name="userName" maxlength="20">
             </div>
 
-            <div id="RRN">
-                <div>주민번호</div>
-                <input type="text" placeholder="주민번호" name="userRRN" maxlength="20">
-            </div>
-
             <div id="phone">
                 <div>전화번호</div>
                 <input type="text" placeholder="전화번호" name="userPhone" maxlength="20">
@@ -53,9 +48,9 @@
             </div>
 
             <div>
-                <button type="submit" value="회원가입">확인</button>
+                <button type="submit" class="btn btn-primary" value="회원가입">확인</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/login'">취소</button>
             </div>
         </form>
-<button onclick="location.href='/login'">취소</button>
 
 </html>

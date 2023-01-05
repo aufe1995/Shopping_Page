@@ -9,8 +9,13 @@
 </head>
 
 <div>
-<div>LOGIN</div>
-<div><input type="text" placeholder="아이디"></div>
-<div><input type="text" placeholder="비밀번호"></div>
-<div><button>로그인</button><button onclick="location.href='/signup'">회원가입</button></div>
+    <div>LOGIN</div>
+        <form th:action="@{/login_proc}" method="post">
+            <div><input type="text" name="userID" placeholder="아이디"></div>
+            <div><input type="text" name="userPW" placeholder="비밀번호"></div>
+            <div>
+                <button type="submit">로그인</button>
+                <button type="button" onclick="location.href='/signup'">회원가입</button>
+            </div>
+        </form>
 </div>

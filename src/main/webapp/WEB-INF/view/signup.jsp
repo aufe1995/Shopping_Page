@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="/css/include/header.css">
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
-//ajax 사용을 위한 스크립트 추가
+<%-- ajax 사용을 위한 스크립트 추가 --%>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <html>
 <head>
@@ -14,18 +14,23 @@
         <form name="signupForm" method="post" action="/signup/action">
             <div id="userid">
                 <div>아이디</div>
-                <input type="text" placeholder="아이디" name="userID" id="userID" maxlength="20">
+                <input type="text" placeholder="아이디" name="userID" id="userID" maxlength="15">
                 <button type="button" onclick="idCheck()" id="userIdChk" value="N">중복확인</button>
+                <div style="color:red;" id="check">확인</div>
+                <div>아이디는 4자 이상, 15자 이하로, 영문과 숫자만 입력 가능합니다.</div>
             </div>
 
             <div id="password">
                 <div>비밀번호</div>
-                <input type="password" placeholder="비밀번호" name="userPW" maxlength="20">
+                <input type="password" placeholder="비밀번호" name="userPW" id="userPW" maxlength="16">
+                <div>비밀번호는 8자 이상, 16자 이하로, 영문과 숫자, 특수문자(!,@,#,$,%,^,&,*,~,_)만 입력 가능합니다.</div>
             </div>
 
             <div id="passcheck">
                 <div>비밀번호 확인</div>
-                <input type="password" placeholder="비밀번호 확인" name="pwCheck" maxlength="20">
+                <input type="password" placeholder="비밀번호 확인" name="pwCheck" id="pwCheck" maxlength="16">
+                <div id="pwChkText1" style="display:none">비밀번호 일치</div>
+                <div id="pwChkText2" style="display:none">비밀번호 불일치</div>
             </div>
 
             <div id="name">
@@ -40,7 +45,8 @@
 
             <div id="email">
                 <div>메일</div>
-                <input type="text" placeholder="이메일" name="userEmail" maxlength="50">
+                <input type="text" placeholder="이메일" name="userEmail" id="userEmail" maxlength="50">
+                <div>ex)abc@email.com</div>
             </div>
 
             <div id="address">
@@ -55,10 +61,22 @@
         </form>
 
 <script type="text/javascript">
+
+    <%-- 아이디 입력 값이 변경됐을 때 --%>
+    $('#userID').on("propertychange change keyup paste input", function() {
+        $('#userIdChk').attr('value','N')
+        $('#check').attr('style','color:red')
+    });
+
+
+
+    <%-- 아이디 입력 값 규칙 및 사용 여부 확인 --%>
     function idCheck() {
 
-        if(signupForm.userID.value.length == 0){
-            alert("아이디를 입력해주세요.");
+        const idValidation = /^[a-zA-Z0-9_-]{4,15}$/;
+
+        if(!idValidation.test($('#userID').val())){
+            alert("아이디 규칙을 확인 해주세요.");
         }
         else{
             $.ajax({
@@ -70,9 +88,9 @@
                     if(data == 0){
                         alert("이용 가능한 아이디입니다.");
                         $('#userIdChk').attr('value','Y')
+                        $('#check').attr('style','color:green')
                     } else {
-                        alert("이용 불가한 아이디입니다. 다시 입력해주세요.");
-                        $('#userIdChk').attr('value','N')
+                        alert("중복된 아이디입니다. 다시 입력해주세요.");
                     }
                 }
             })
@@ -80,8 +98,12 @@
     }
 
     function signupCheck(){
+
+        const pwValidation = /^[a-zA-Z0-9!,@,#,$,%,^,&,*,?,_,~]{8,16}$/;
+        const emailValidation = /^[A-z|0-9]([A-z|0-9]*)(@)([A-z]*)(\.)([A-z]*)$/;
+
         // 아이디 유효성 검사
-        if(signupForm.userID.value.length == 0){
+        if(!signupForm.userID.value.length){
             alert("아이디를 입력해주세요.");
             return false;
         }
@@ -92,10 +114,16 @@
         }
 
         // 비밀번호 유효성 검사
-        if(signupForm.userPW.value.length == 0){
+        if(!signupForm.userPW.value.length){
             alert("비밀번호를 입력해주세요.");
             return false;
         }
+
+        if(!pwValidation.test($('#userPW').val())){
+            alert("비밀번호 규칙을 확인해주세요.");
+            return false;
+        }
+
 
         // 비밀번호 재입력 확인
         if(signupForm.userPW.value != signupForm.pwCheck.value){
@@ -104,25 +132,31 @@
         }
 
         // 이름 입력 확인
-        if(signupForm.userName.value.length == 0){
+        if(!signupForm.userName.value.length){
             alert("이름을 입력해주세요.");
             return false;
         }
 
         // 전화번호 입력 확인
-        if(signupForm.userPhone.value.length == 0){
+        if(!signupForm.userPhone.value.length){
             alert("전화번호를 입력해주세요.");
             return false;
         }
 
         // 메일 입력 확인
-        if(signupForm.userEmail.value.length == 0){
+        if(!signupForm.userEmail.value.length){
             alert("메일을 입력해주세요.");
             return false;
         }
 
+        // 메일 양식 확인
+        if(!emailValidation.test($('#userEmail').val())){
+            alert("메일을 양식을 확인해주세요.");
+            return false;
+        }
+
         // 주소 입력 확인
-        if(signupForm.userADR.value.length == 0){
+        if(!signupForm.userADR.value.length){
             alert("주소를 입력해주세요.");
             return false;
         }

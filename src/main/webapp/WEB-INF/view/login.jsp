@@ -10,9 +10,9 @@
 
 <div>
     <div>LOGIN</div>
-        <form th:action="@{/login_proc}" method="post">
+        <form action="/login/action" method="post">
             <div><input type="text" name="userID" placeholder="아이디"></div>
-            <div><input type="text" name="userPW" placeholder="비밀번호"></div>
+            <div><input type="password" name="userPW" placeholder="비밀번호"></div>
             <div>
                 <button type="submit">로그인</button>
                 <button type="button" onclick="location.href='/signup'">회원가입</button>

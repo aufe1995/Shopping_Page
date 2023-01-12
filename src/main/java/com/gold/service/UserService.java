@@ -1,12 +1,14 @@
 package com.gold.service;
 
 import com.gold.mappers.UserMapper;
-import com.gold.user.UserVO;
+import com.gold.user.UserVo;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +19,16 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserMapper userMapper;
 
+    public int idCheck(String userID) throws Exception {
+        int result = userMapper.idCheck(userID);
+        return result;
+    }
+
     @Transactional
-    public void joinUser(UserVO userVo){
+    public void joinUser(@NotNull UserVo userVo){
         userVo.setUserID(userVo.getUserID());
-        userVo.setUserPW(userVo.getUserPW());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        userVo.setUserPW(passwordEncoder.encode(userVo.getPassword()));
         userVo.setUserName(userVo.getUserName());
         userVo.setUserPhone(userVo.getUserPhone());
         userVo.setUserEmail(userVo.getUserEmail());
@@ -31,12 +39,12 @@ public class UserService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String userID) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 
-        UserVO userVO = userMapper.getUserAccount(userID);
-        if(userVO == null){
-            throw new UsernameNotFoundException("User not authorized.");
-        }
-        return userVO;
+        UserVo userVo = userMapper.getUserAccount(userId);
+
+        if (userVo == null) throw new UsernameNotFoundException("Not Found account.");
+
+        return userVo;
     }
 }

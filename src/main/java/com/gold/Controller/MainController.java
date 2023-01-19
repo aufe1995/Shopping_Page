@@ -2,6 +2,7 @@ package com.gold.Controller;
 
 import com.gold.service.UserService;
 import com.gold.user.UserVo;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class MainController {
 	//홈페이지
 	@GetMapping("/")
 	public String index() {
-		return "index";
+		return "home";
 	}
 
 	//구현 준비중인 페이지
@@ -29,7 +30,7 @@ public class MainController {
 
 	//로그인 페이지
 	@GetMapping("/login")
-	public String login(Model model, @RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception) {
+	public String login(@NotNull Model model, @RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception) {
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
 		return "login";
@@ -37,7 +38,7 @@ public class MainController {
 
 	@PostMapping("/login/action")
 	public String loginAction() {
-		return "index";
+		return "redirect:/";
 	}
 
 	//회원가입 페이지

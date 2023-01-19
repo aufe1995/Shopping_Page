@@ -1,0 +1,62 @@
+#main {
+  font-size : 30px;
+  font-weight : 600;
+  width : 70%;
+  margin-top : 5%;
+  margin-left : 25%;
+}
+
+#mainLine {
+  width : 1000px;
+  background-color : black;
+  height : 5px;
+  margin : 3% 0 3% 25%;
+}
+
+#loginDiv {
+  float: left;
+  margin-left : 30%;
+}
+
+.inputDiv {
+  margin-top : 15px;
+  margin-bottom : 15px;
+}
+
+#input {
+  width : 300px;
+  height : 30px;
+  padding : 5px;
+}
+
+#loginBtn {
+  width : 300px;
+  height : 30px;
+  padding : 5px;
+}
+
+#findDiv {
+  width : 300px;
+  height : 30px;
+  padding-top : 15px;
+  text-align: center
+}
+
+.findBtn {
+  width : 120px;
+  height : 30px;
+}
+
+#line {
+  border-left : solid black;
+  height : 200px;
+  float: left;
+  margin-left : 5%;
+}
+
+.signupBtn {
+  width : 300px;
+  height : 200px;
+  float: left;
+  margin-left : 5%;
+}

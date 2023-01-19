@@ -29,13 +29,12 @@
             <div id="passcheck">
                 <div>비밀번호 확인</div>
                 <input type="password" placeholder="비밀번호 확인" name="pwCheck" id="pwCheck" maxlength="16">
-                <div id="pwChkText1" style="display:none">비밀번호 일치</div>
-                <div id="pwChkText2" style="display:none">비밀번호 불일치</div>
+                <font id="pwChkText" size="2"></font>
             </div>
 
             <div id="name">
                 <div>이름</div>
-                <input type="text" placeholder="이름" name="userName" maxlength="20">
+                <input type="text" placeholder="이름" name="userName" maxlength="10">
             </div>
 
             <div id="phone">
@@ -68,6 +67,24 @@
         $('#check').attr('style','color:red')
     });
 
+    <%-- 비밀번호 확인 입력 값이 변경됐을 때 --%>
+    $(function(){
+        $('#userPW').keyup(function(){
+          $('#pwChkText').html('');
+        });
+
+        $('#pwCheck').keyup(function(){
+
+            if($('#userPW').val() != $('#pwCheck').val()){
+              $('#pwChkText').html('비밀번호 일치하지 않음<br><br>');
+              $('#pwChkText').attr('color', 'red');
+            } else{
+              $('#pwChkText').html('비밀번호 일치함<br><br>');
+              $('#pwChkText').attr('color', 'green');
+            }
+
+        });
+    });
 
 
     <%-- 아이디 입력 값 규칙 및 사용 여부 확인 --%>

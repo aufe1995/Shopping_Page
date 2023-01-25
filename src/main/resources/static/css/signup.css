@@ -1,0 +1,47 @@
+#main {
+  font-size : 30px;
+  font-weight : 600;
+  width : 70%;
+  margin-top : 5%;
+  margin-left : 25%;
+}
+
+#mainLine {
+  width : 1000px;
+  background-color : black;
+  height : 5px;
+  margin : 1% 0 2% 25%;
+}
+
+#signupDiv {
+  float: left;
+  margin-left : 30%;
+}
+
+.list {
+  font-size : 20px;
+  width : 200px;
+  margin : 15px 5px 15px 5px;
+  display: inline-block;
+}
+
+.inputDiv {
+  font-size : 20px;
+  width : 300px;
+  margin : 15px 5px 15px 5px;
+  display: inline-block;
+}
+
+.desc {
+  font-size : 15px;
+  margin : -5px 0 15px 225px;
+}
+
+#idCheck {
+  display: inline-block;
+}
+
+#buttonDiv {
+  margin : auto;
+  width: 400px;
+}

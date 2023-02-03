@@ -12,10 +12,10 @@ public class UserVo implements UserDetails {
     private String userID;
     private String userPW;
     private String userName;
-    private String userPhone;
-    private String userEmail;
+    private String userMail;
+    private String userZIP;
     private String userADR;
-    private String userAuth;
+    private String userDADR;
 
     @Override
     public String getPassword() {
@@ -37,7 +37,7 @@ public class UserVo implements UserDetails {
 
         Collection < GrantedAuthority > collectors = new ArrayList<>();
         collectors.add(() -> {
-            return "USER";
+            return "1";
         });
 
         return collectors;

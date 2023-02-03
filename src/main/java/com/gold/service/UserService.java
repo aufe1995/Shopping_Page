@@ -30,10 +30,10 @@ public class UserService implements UserDetailsService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         userVo.setUserPW(passwordEncoder.encode(userVo.getPassword()));
         userVo.setUserName(userVo.getUserName());
-        userVo.setUserPhone(userVo.getUserPhone());
-        userVo.setUserEmail(userVo.getUserEmail());
+        userVo.setUserMail(userVo.getUserMail());
+        userVo.setUserZIP(userVo.getUserZIP());
         userVo.setUserADR(userVo.getUserADR());
-        userVo.setUserAuth("USER");
+        userVo.setUserDADR(userVo.getUserDADR());
         userMapper.saveUser(userVo);
     }
 

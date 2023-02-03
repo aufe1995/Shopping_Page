@@ -1,0 +1,33 @@
+/* 내용 부분 크기 */
+.wrapper {
+    max-width: 1020px;
+    margin: 0 auto;
+    background-color: #FFAEC8;
+}
+
+.warp {
+    width: 1080px;
+    margin: auto;
+}
+
+.content_warp {
+    width: 1020px;
+    height: 500px;
+    line-height: 500px;
+    text-align: center;
+    display: inline-block;
+}
+
+.content_box>span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.content_button {
+    width: 100px;
+    height : 30px;
+    margin: 10 5px;
+    background-color: black;
+    color: white;
+    border: none;
+}

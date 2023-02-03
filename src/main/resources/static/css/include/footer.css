@@ -1,5 +1,12 @@
+/* footer 부분 크기 */
+.footer {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+/* footer 내용 영역 */
 .footer_content{
-	position: fixed;
-	bottom: 0;
 	width: 100%;
+    background-color: green;
+    height: 200px;
 }

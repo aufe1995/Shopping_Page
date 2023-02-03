@@ -1,0 +1,90 @@
+/* 내용 부분 크기 */
+.wrapper {
+    max-width: 1020px;
+    margin: 0 auto;
+    background-color: #FFAEC8;
+}
+
+.warp {
+    width: 1080px;
+    margin: auto;
+}
+
+/* 회원가입 이름 영역 */
+.title_area {
+    padding: 20px 15px;
+}
+
+.title_area>span{
+	font-size : 30px;
+	font-weight: 900;
+}
+
+.boundary {
+  width: 1019px;
+  background-color: black;
+  height: 5px;
+  margin-bottom: 25px;
+}
+
+/* 회원가입 영역 */
+.join_warp {
+  padding: 30px 0 10px 60px;
+  height: 650px;
+}
+
+.join_title {
+  font-size: 20px;
+  font-weight: 900;
+  width: 200px;
+  margin: 15px 5px 15px 105px;
+  display: inline-block;
+}
+
+/* 입력 박스 영역 */
+.input_box {
+  font-size: 20px;
+  width: 360px;
+  height: 30px;
+  margin: 15px 5px 15px 5px;
+  display: inline-block;
+}
+
+.input_small_box {
+  font-size: 20px;
+  width: 250px;
+  height: 30px;
+  margin: 15px 5px 15px 5px;
+}
+
+.input_add_box {
+  font-size: 20px;
+  width: 360px;
+  height: 30px;
+  margin: -5px 5px 15px 320px;
+  display: block;
+}
+
+.join_button {
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+}
+
+.join_desc {
+  font-size: 12px;
+  margin: -10px 0 15px 325px;
+}
+
+
+/* 확인 및 취소 영역 */
+#submit_warp {
+  margin: auto;
+  width: 400px;
+}
+
+.submit_button {
+    width: 120px;
+    height: 30px;
+    margin: 15px 20px 0 20px;
+}

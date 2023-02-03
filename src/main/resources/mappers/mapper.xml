@@ -11,8 +11,8 @@
 
     <!--회원가입-->
     <insert id="saveUser" parameterType="com.gold.user.UserVo">
-        INSERT INTO USER (user_id, user_pw, user_name, user_phone, user_email, user_adr, user_auth)
-        VALUES(#{userID},#{userPW},#{userName},#{userPhone},#{userEmail},#{userADR},#{userAuth});
+        INSERT INTO USER (USER_ID, USER_PW, USER_NAME, USER_MAIL, USER_ZIP, USER_ADR, USER_DADR, LEVEL, ADD_DATE, POINT)
+        VALUES(#{userID},#{userPW},#{userName},#{userMail},#{userZIP},#{userADR},#{userDADR}, '1', now(), '0');
     </insert>
 
     <!--아이디 중복검사-->

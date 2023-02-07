@@ -29,7 +29,7 @@ public class MailConfig {
         javaMailSender.setHost(host);                                   // smtp 서버 주소
         javaMailSender.setUsername(id);                                 // 설정(발신) 메일 아이디
         javaMailSender.setPassword(password);                           // 설정(발신) 메일 패스워드
-        javaMailSender.setPort(port);                                   //smtp port
+        javaMailSender.setPort(port);                                   // smtp port
         javaMailSender.setJavaMailProperties(getMailProperties());      // 메일 인증서버 정보 가져온다.
         javaMailSender.setDefaultEncoding("UTF-8");
         return javaMailSender;
@@ -41,8 +41,6 @@ public class MailConfig {
         properties.setProperty("mail.smtp.auth", "true");                       // smtp 인증
         properties.setProperty("mail.smtp.starttls.enable", "true");            // smtp starttls 사용
         properties.setProperty("mail.debug", "true");                           // 디버그 사용
-        properties.setProperty("mail.smtp.ssl.trust","smtp.mailplug.co.kr");    // ssl 인증 서버 주소
-        properties.setProperty("mail.smtp.ssl.enable","true");                  // ssl 사용
         return properties;
     }
 }

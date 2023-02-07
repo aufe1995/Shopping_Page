@@ -45,7 +45,7 @@ public class MailService {
         msg += "</td></tr></tbody></table></div>";
 
         message.setText(msg, "utf-8", "html");                   //내용, charset타입, subtype
-        message.setFrom(new InternetAddress(id,"prac_Admin"));         //보내는 사람의 메일 주소, 보내는 사람 이름
+        message.setFrom(new InternetAddress(id,"Web Shopping Admin"));         //보내는 사람의 메일 주소, 보내는 사람 이름
 
         return message;
     }

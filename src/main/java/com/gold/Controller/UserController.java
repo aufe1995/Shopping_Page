@@ -88,7 +88,7 @@ public class UserController {
 
         String result = mailService.sendSimpleMessage(userMail);
 
-        logger.info(">>>>>>>>>>>>>>>>>>> 메일 인증 확인"+result);
+        logger.info(">>>>>>>>>>>>>>>>>>> 메일 인증 확인");
 
         return result;
     }

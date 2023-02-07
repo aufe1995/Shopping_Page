@@ -1,5 +1,6 @@
 package com.gold.Controller;
 
+import com.gold.service.MailService;
 import com.gold.service.UserService;
 import com.gold.user.UserVo;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +26,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    MailService mailService;
 
     //관리자 페이지
     @GetMapping("/admin")
@@ -70,7 +74,22 @@ public class UserController {
     @ResponseBody
     @PostMapping("/idCheck")
     public int idCheck(String userID) throws Exception {
+
         int result = userService.idCheck(userID);
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 아이디 중복 확인");
+
+        return result;
+    }
+
+    @ResponseBody
+    @PostMapping("/mailCheck")
+    public String mailCheck(String userMail) throws Exception {
+
+        String result = mailService.sendSimpleMessage(userMail);
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 메일 인증 확인"+result);
+
         return result;
     }
 

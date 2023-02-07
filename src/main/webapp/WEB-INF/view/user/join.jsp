@@ -53,14 +53,14 @@
                 <div id="mail_warp">
                     <div class="join_title">메일</div>
                     <input class="input_small_box" type="text" placeholder="메일" name="userMail" id="userMail" maxlength="50">
-                    <button class="join_button" type="button" id="emailChk" >인증번호 전송</button>
-                    <input class="input_add_box" type="text" placeholder="인증번호" name="mailCheck" id="mailCheck" maxlength="10">
+                    <button class="join_button" type="button" onclick="mailCheck()" id="mailChk" >인증번호 전송</button>
+                    <input class="input_add_box" type="text" placeholder="인증번호" name="authCheck" id="authCheck" maxlength="10">
                 </div>
 
                 <div id="address_warp">
                     <div class="join_title">주소</div>
                     <input class="input_small_box" type="text" name="userZIP" id="userZIP" maxlength="100">
-                    <button class="join_button" type="button" id="emailChk" >주소 찾기</button>
+                    <button class="join_button" type="button" id="ZIPCheck" >주소 찾기</button>
                     <input class="input_add_box" type="text" name="userADR" id="userADR" maxlength="100">
                     <input class="input_add_box" type="text" name="userDADR" id="userDADR" maxlength="100">
                 </div>
@@ -85,39 +85,35 @@
     });
 
     <%-- 비밀번호 확인 입력 값이 변경됐을 때 --%>
-    $(function(){
+
 
         const pwValidation = /^[a-zA-Z0-9!,@,#,$,%,^,&,*,?,_,~]{8,16}$/;
 
         $('#userPW').keyup(function(){
             $('#password_warp span').html('X');
             $('#password_warp span').attr('style', 'color:red');
-            $('#pw_check_warp span').html('X');
-            $('#pw_check_warp span').attr('style', 'color:red');
+            $('#pw_check_warp span').html('');
 
-            if(pwValidation.test($('#userPW').val()) && $('#userPW').val() == $('#pwCheck').val()){
+            if(pwValidation.test($('#userPW').val())){
                 $('#password_warp span').html('√');
                 $('#password_warp span').attr('style', 'color:green');
-                $('#pw_check_warp span').html('√');
-                $('#pw_check_warp span').attr('style', 'color:green');
-            } else if(pwValidation.test($('#userPW').val()) && $('#userPW').val() != $('#pwCheck').val()){
-                $('#password_warp span').html('√');
-                $('#password_warp span').attr('style', 'color:green');
+            } else {
+                $('#password_warp span').html('X');
+                $('#password_warp span').attr('style', 'color:red');
             }
         });
 
         $('#pwCheck').keyup(function(){
 
-            if($('#userPW').val() != $('#pwCheck').val()){
-              $('#pw_check_warp span').html('X');
-              $('#pw_check_warp span').attr('style', 'color:red');
-            } else{
+            if($('#userPW').val() == $('#pwCheck').val()){
               $('#pw_check_warp span').html('√');
               $('#pw_check_warp span').attr('style', 'color:green');
+            } else{
+              $('#pw_check_warp span').html('X');
+              $('#pw_check_warp span').attr('style', 'color:red');
             }
 
         });
-    });
 
     <%-- 아이디 입력 값 규칙 및 사용 여부 확인 --%>
     function idCheck() {
@@ -147,6 +143,28 @@
         }
     }
 
+    function mailCheck() {
+
+        const mailValidation = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+        if(!mailValidation.test($('#userMail').val())){
+            alert("메일을 정확히 입력해주세요.");
+        }
+        else{
+            $.ajax({
+                url : "/mailCheck",
+                type : "POST",
+                dataType : "JSON",
+                data : {"userMail" : $("#userMail").val()},
+                success : function (data) {
+                    alert('인증번호가 전송되었습니다.')
+                }
+            })
+        }
+    }
+
+
+    <%-- 회원가입 입력 값 확인 --%>
     function joinCheck(){
 
         const pwValidation = /^[a-zA-Z0-9!,@,#,$,%,^,&,*,?,_,~]{8,16}$/;

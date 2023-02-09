@@ -65,6 +65,13 @@
   display: block;
 }
 
+.input_small_add_box {
+  font-size: 20px;
+  width: 250px;
+  height: 30px;
+  margin: -5px 5px 15px 320px;
+}
+
 .join_button {
     width: 100px;
     height: 30px;

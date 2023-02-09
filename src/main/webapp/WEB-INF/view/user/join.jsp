@@ -54,7 +54,8 @@
                     <div class="join_title">메일</div>
                     <input class="input_small_box" type="text" placeholder="메일" name="userMail" id="userMail" maxlength="50">
                     <button class="join_button" type="button" onclick="mailCheck()" id="mailChk" >인증번호 전송</button>
-                    <input class="input_add_box" type="text" placeholder="인증번호" name="authCheck" id="authCheck" maxlength="10">
+                    <input class="input_small_add_box" type="text" placeholder="인증번호" name="userAuth" id="userAuth" maxlength="10">
+                    <button class="join_button" type="button" onclick="authCheck()" id="authChk" value="false">확인</button>
                 </div>
 
                 <div id="address_warp">
@@ -77,11 +78,13 @@
 
 <script type="text/javascript">
 
+    var key = '';
+
     <%-- 아이디 입력 값이 변경됐을 때 --%>
     $('#userID').keyup(function() {
         $('#userIdChk').attr('value','N');
         $('#id_warp span').html('X');
-        $('#id_warp span').attr('style','color:red')
+        $('#id_warp span').attr('style','color:red');
     });
 
     <%-- 비밀번호 확인 입력 값이 변경됐을 때 --%>
@@ -157,9 +160,28 @@
                 dataType : "JSON",
                 data : {"userMail" : $("#userMail").val()},
                 success : function (data) {
-                    alert('인증번호가 전송되었습니다.')
+                    alert("인증 번호가 전송되었습니다.")
+                    key = data;
                 }
             })
+        }
+    }
+
+    function authCheck() {
+        $('#authChk').attr('value','false');
+
+        if(!join_form.userAuth.value.length){
+            alert("인증 번호를 입력해주세요.");
+        }
+        else{
+            if( key == $('#userAuth').val()){
+                alert("인증이 확인되었습니다.");
+                $('#authChk').attr('value','true');
+                $('#userMail').prop('disabled', 'true');
+                $('#userAuth').prop('disabled', 'true');
+            } else {
+                alert("인증 번호를 확인바랍니다.");
+            }
         }
     }
 
@@ -175,6 +197,7 @@
             return false;
         }
 
+        // 아이디 중복 확인
         if($('#userIdChk').val() != "Y"){
             alert("아이디 중복 검사를 해주세요.");
             return false;
@@ -186,6 +209,7 @@
             return false;
         }
 
+        // 비밀번호 규칙 확인
         if(!pwValidation.test($('#userPW').val())){
             alert("비밀번호 규칙을 확인해주세요.");
             return false;
@@ -204,8 +228,8 @@
         }
 
         // 메일 입력 확인
-        if(!join_form.userMail.value.length){
-            alert("메일을 입력해주세요.");
+        if(!$('#authChk').val()){
+            alert("메일을 인증해주세요.");
             return false;
         }
 
@@ -213,6 +237,8 @@
         if(!join_form.userZIP.value.length || !join_form.userADR.value.length || !join_form.userDADR.value.length){
             alert("주소를 입력해주세요.");
             return false;
+        }else{
+            $('#userMail').prop('disabled', 'false');
         }
 
     }

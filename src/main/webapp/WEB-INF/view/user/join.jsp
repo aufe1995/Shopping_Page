@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/user/join.css">
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 <%-- ajax 사용을 위한 스크립트 추가 --%>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
 <%-- 다음 주소록 사용을 위한 스크립트 추가 --%>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
@@ -25,7 +25,7 @@
 
         <div class="join_content">
 
-            <form class="join_warp" id="join_form" method="post" action="/join/action">
+            <form class="join_warp" id="join_form" method="post" action="/user/joinAction">
                 <div id="id_warp">
                     <div class="join_title">아이디</div>
                     <input class="input_small_box" type="text" placeholder="아이디" name="userID" id="userID" maxlength="15">

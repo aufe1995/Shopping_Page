@@ -8,6 +8,10 @@
         SELECT * FROM USER
         WHERE USER_ID = #{userID};
     </select>
+    <select id="userLogin" resultType="com.gold.user.UserVo">
+        SELECT * FROM USER
+        WHERE USER_ID = #{userID} AND USER_PW = #{userPW};
+    </select>
 
     <!--회원가입-->
     <insert id="saveUser" parameterType="com.gold.user.UserVo">

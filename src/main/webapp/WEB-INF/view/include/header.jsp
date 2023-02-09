@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +14,20 @@
 		<div class="logo_area">
 			<a href="/"><img src="/img/logo.png" alt="이미지" onclick="location.href='/'" height="60px"></a>
 
+            <!-- 로그인 하지 않은 상태 -->
+            <c:if test="${user == null}">
 			<div class="login_area">
-                <div class="login_button" onclick="location.href='/user/login'">로그인</a></div>
+			    <div class="login_button" onclick="location.href='/user/login'">로그인</a></div>
             </div>
+            </c:if>
+
+            <!-- 로그인 상태 -->
+            <c:if test="${user != null}">
+            <div class="login_area">
+                <div class="login_button" onclick="location.href='/logout'">로그아웃</a></div>
+            </div>
+            <div class="user_info">${user.userName}님 반갑습니다.</div>
+            </c:if>
 		</div>
 
 		<div class="search_area">

@@ -39,12 +39,17 @@ public class UserService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userID) throws UsernameNotFoundException {
 
-        UserVo userVo = userMapper.getUserAccount(userId);
+        UserVo userVo = userMapper.getUserAccount(userID);
 
         if (userVo == null) throw new UsernameNotFoundException("Not Found account.");
 
         return userVo;
+    }
+
+    public UserVo userLogin(UserVo user) throws Exception{
+
+        return userMapper.userLogin(user);
     }
 }

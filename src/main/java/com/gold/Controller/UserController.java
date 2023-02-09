@@ -7,7 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -32,7 +36,7 @@ public class UserController {
 
     //관리자 페이지
     @GetMapping("/admin")
-    public String adminPage() {
+    public String adminPage(Model model, HttpSession session, @AuthenticationPrincipal UserDetails user) {
 
         logger.info(">>>>>>>>>>>>>>>>>>> 관리자 페이지 진입");
 
@@ -60,7 +64,7 @@ public class UserController {
     }
 
     //회원가입 실행 시
-    @PostMapping("/join/action")
+    @PostMapping("/user/joinAction")
     public String joinAction(UserVo userVO) {
 
         userService.joinUser(userVO);
@@ -93,11 +97,22 @@ public class UserController {
         return result;
     }
 
-    @PostMapping("/login/action")
-    public String loginAction(HttpServletRequest request, HttpServletResponse response) {
+    @PostMapping("/user/loginAction")
+    public String loginAction(HttpServletRequest request, UserVo user, RedirectAttributes rttr) throws Exception{
 
-        logger.info(">>>>>>>>>>>>>>>>>>> 로그인 실행");
-        return "main";
+        HttpSession session = request.getSession();
+        UserVo userVo = userService.userLogin(user);
+
+        if(userVo == null){
+            logger.info(">>>>>>>>>>>>>>>>>>> 로그인 실패");
+            int result = 0;
+            rttr.addFlashAttribute("result", result);
+            return "redirect:/user/login";
+        }
+
+        session.setAttribute("user",userVo);
+
+        return "redirect:/";
     }
 
     @GetMapping("logout")

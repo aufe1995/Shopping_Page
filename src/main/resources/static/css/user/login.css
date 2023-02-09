@@ -42,6 +42,11 @@
     display: inline-block;
 }
 
+/* 로그인 실패시 경고글 */
+.login_warning {
+	color:red;
+}
+
 .input_box {
     width: 350px;
     margin: 15px 0;

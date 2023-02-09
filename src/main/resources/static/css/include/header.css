@@ -29,6 +29,14 @@
     clear: both;
 }
 
+.user_info {
+    height: 100%;
+    margin-top: 20px;
+    margin-right: 10px;
+    float: right;
+	text-align: center;
+}
+
 /* 로그인 영역 */
 .login_area {
     width: 10%;

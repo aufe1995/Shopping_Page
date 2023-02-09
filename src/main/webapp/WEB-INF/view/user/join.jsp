@@ -9,6 +9,8 @@
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 <%-- ajax 사용을 위한 스크립트 추가 --%>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<%-- 다음 주소록 사용을 위한 스크립트 추가 --%>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -60,9 +62,9 @@
 
                 <div id="address_warp">
                     <div class="join_title">주소</div>
-                    <input class="input_small_box" type="text" name="userZIP" id="userZIP" maxlength="100">
-                    <button class="join_button" type="button" id="ZIPCheck" >주소 찾기</button>
-                    <input class="input_add_box" type="text" name="userADR" id="userADR" maxlength="100">
+                    <input class="input_small_box" type="text" name="userZIP" id="userZIP" maxlength="20" readonly="readonly">
+                    <button class="join_button" type="button" onclick="addressFind()" id="ZIPFind">주소 찾기</button>
+                    <input class="input_add_box" type="text" name="userADR" id="userADR" maxlength="20" readonly="readonly">
                     <input class="input_add_box" type="text" name="userDADR" id="userDADR" maxlength="100">
                 </div>
 
@@ -88,35 +90,31 @@
     });
 
     <%-- 비밀번호 확인 입력 값이 변경됐을 때 --%>
+    const pwValidation = /^[a-zA-Z0-9!,@,#,$,%,^,&,*,?,_,~]{8,16}$/;
 
+    $('#userPW').keyup(function(){
+        $('#password_warp span').html('X');
+        $('#password_warp span').attr('style', 'color:red');
+        $('#pw_check_warp span').html('');
 
-        const pwValidation = /^[a-zA-Z0-9!,@,#,$,%,^,&,*,?,_,~]{8,16}$/;
-
-        $('#userPW').keyup(function(){
+        if(pwValidation.test($('#userPW').val())){
+            $('#password_warp span').html('√');
+            $('#password_warp span').attr('style', 'color:green');
+        } else {
             $('#password_warp span').html('X');
             $('#password_warp span').attr('style', 'color:red');
-            $('#pw_check_warp span').html('');
+        }
+    });
 
-            if(pwValidation.test($('#userPW').val())){
-                $('#password_warp span').html('√');
-                $('#password_warp span').attr('style', 'color:green');
-            } else {
-                $('#password_warp span').html('X');
-                $('#password_warp span').attr('style', 'color:red');
-            }
-        });
-
-        $('#pwCheck').keyup(function(){
-
-            if($('#userPW').val() == $('#pwCheck').val()){
-              $('#pw_check_warp span').html('√');
-              $('#pw_check_warp span').attr('style', 'color:green');
-            } else{
-              $('#pw_check_warp span').html('X');
-              $('#pw_check_warp span').attr('style', 'color:red');
-            }
-
-        });
+    $('#pwCheck').keyup(function(){
+        if($('#userPW').val() == $('#pwCheck').val()){
+            $('#pw_check_warp span').html('√');
+            $('#pw_check_warp span').attr('style', 'color:green');
+        } else{
+            $('#pw_check_warp span').html('X');
+            $('#pw_check_warp span').attr('style', 'color:red');
+        }
+    });
 
     <%-- 아이디 입력 값 규칙 및 사용 여부 확인 --%>
     function idCheck() {
@@ -146,6 +144,7 @@
         }
     }
 
+    <%-- 메일 입력 값 확인 및 인증 번호 전송 --%>
     function mailCheck() {
 
         const mailValidation = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -167,6 +166,7 @@
         }
     }
 
+    <%-- 메일 입력 인증 번호 확인 --%>
     function authCheck() {
         $('#authChk').attr('value','false');
 
@@ -177,7 +177,7 @@
             if( key == $('#userAuth').val()){
                 alert("인증이 확인되었습니다.");
                 $('#authChk').attr('value','true');
-                $('#userMail').prop('disabled', 'true');
+                $('#userMail').prop('readonly', 'true');
                 $('#userAuth').prop('disabled', 'true');
             } else {
                 alert("인증 번호를 확인바랍니다.");
@@ -185,6 +185,51 @@
         }
     }
 
+    <%-- 다음 주소 검색 연동 --%>
+    function addressFind() {
+
+        new daum.Postcode({
+            oncomplete: function (data){
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    addr += extraAddr;
+
+                } else {
+                    addr += '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('userZIP').value = data.zonecode;
+                document.getElementById("userADR").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("userDADR").focus();
+            }
+        }).open();
+    }
 
     <%-- 회원가입 입력 값 확인 --%>
     function joinCheck(){
@@ -237,8 +282,6 @@
         if(!join_form.userZIP.value.length || !join_form.userADR.value.length || !join_form.userDADR.value.length){
             alert("주소를 입력해주세요.");
             return false;
-        }else{
-            $('#userMail').prop('disabled', 'false');
         }
 
     }

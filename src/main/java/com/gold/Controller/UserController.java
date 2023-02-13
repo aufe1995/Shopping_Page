@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,26 +34,6 @@ public class UserController {
 
     @Autowired
     MailService mailService;
-
-    //관리자 페이지
-    @GetMapping("/admin")
-    public String adminPage(Model model, HttpSession session, @AuthenticationPrincipal UserDetails user) {
-
-        logger.info(">>>>>>>>>>>>>>>>>>> 관리자 페이지 진입");
-
-        return "admin";
-    }
-
-    //로그인 페이지
-    @GetMapping("/user/login")
-    public String loginPage(@NotNull Model model, @RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception) {
-        model.addAttribute("error", error);
-        model.addAttribute("exception", exception);
-
-        logger.info(">>>>>>>>>>>>>>>>>>> 로그인 페이지 진입");
-
-        return "user/login";
-    }
 
     //회원가입 페이지
     @GetMapping("/user/join")
@@ -97,28 +78,63 @@ public class UserController {
         return result;
     }
 
-    @PostMapping("/user/loginAction")
+    //로그인 페이지
+    @GetMapping("/user/login")
+    public String loginPage(@NotNull Model model, @RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception) {
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 로그인 페이지 진입");
+
+        return "user/login";
+    }
+
+    //로그인 실행
+    @PostMapping("/user/loginAction.do")
     public String loginAction(HttpServletRequest request, UserVo user, RedirectAttributes rttr) throws Exception{
 
         HttpSession session = request.getSession();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        String rawPW = "";
+        String encodePW = "";
+
         UserVo userVo = userService.userLogin(user);
 
-        if(userVo == null){
-            logger.info(">>>>>>>>>>>>>>>>>>> 로그인 실패");
-            int result = 0;
-            rttr.addFlashAttribute("result", result);
+        //아이디가 있을 경우(추후 security로 변경 예정)
+        if(userVo != null){
+
+            rawPW = user.getUserPW();
+            encodePW = userVo.getUserPW();
+
+            if(passwordEncoder.matches(rawPW, encodePW)==true){
+                userVo.setUserPW("");
+                session.setAttribute("user",userVo);
+                return "redirect:/";
+            }else{
+                logger.info(">>>>>>>>>>>>>>>>>>> 비밀번호 불일치");
+                rttr.addFlashAttribute("result",0);
+                return "redirect:/user/login";
+            }
+        } else { //아이디가 없을 경우
+            logger.info(">>>>>>>>>>>>>>>>>>> 아이디 없음");
+            rttr.addFlashAttribute("result",0);
             return "redirect:/user/login";
         }
 
-        session.setAttribute("user",userVo);
-
-        return "redirect:/";
     }
 
+    //로그아웃 실행
     @GetMapping("logout")
     public String logout(HttpServletRequest request, HttpServletResponse response){
-        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+
+        //new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+
+        HttpSession session = request.getSession();
+        session.invalidate();
+
         logger.info(">>>>>>>>>>>>>>>>>>> 로그아웃 실행");
+
         return "redirect:/";
     }
 

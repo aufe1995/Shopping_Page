@@ -42,6 +42,8 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'javax.servlet:jstl'
+	compileOnly 'org.springframework:spring-context'
+	implementation 'org.springframework:spring-webmvc'
 }
 
 tasks.named('test') {

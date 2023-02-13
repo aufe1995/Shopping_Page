@@ -58,6 +58,26 @@
     font-weight: 800;
     border-radius: 10px;
 }
+/* 로그인 영역 */
+.user_area {
+    width: 10%;
+    height: 100%;
+    float: right;
+	display: inline-block;
+	text-align: center;
+	margin-right: 10px;
+}
+
+/* 로그인 영역 */
+.admin_area {
+    width: 15%;
+    height: 100%;
+    float: right;
+	display: inline-block;
+	text-align: center;
+	margin-right: 10px;
+}
+
 
 /* 검색 영역 */
 .search_area {

@@ -16,6 +16,8 @@ public class UserVo implements UserDetails {
     private String userZIP;
     private String userADR;
     private String userDADR;
+    private int level;
+
 
     @Override
     public String getPassword() {

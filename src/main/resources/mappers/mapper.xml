@@ -10,7 +10,7 @@
     </select>
     <select id="userLogin" resultType="com.gold.user.UserVo">
         SELECT * FROM USER
-        WHERE USER_ID = #{userID} AND USER_PW = #{userPW};
+        WHERE USER_ID = #{userID};
     </select>
 
     <!--회원가입-->

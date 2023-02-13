@@ -1,0 +1,42 @@
+/* 내용 부분 크기 */
+.wrapper {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.warp {
+    width: 1080px;
+}
+
+/* 관리자 페이지 이름 영역 */
+.title_area {
+    padding: 20px 15px;
+}
+
+.title_area>span{
+	font-size : 30px;
+	font-weight: 900;
+}
+
+.admin_navi_warp{
+    width: 20%;
+    height: 300px;
+    float:left;
+    height: 100%;
+}
+
+.admin_navi_warp li{
+    display: block;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+.admin_navi_warp li a{
+    display: block;
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bolder;
+}

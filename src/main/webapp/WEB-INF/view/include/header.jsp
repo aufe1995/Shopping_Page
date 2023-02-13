@@ -21,12 +21,25 @@
             </div>
             </c:if>
 
-            <!-- 로그인 상태 -->
-            <c:if test="${user != null}">
-            <div class="login_area">
+            <!-- 유저 로그인 상태 -->
+            <c:if test="${user.level > 0}">
+			<div class="login_area">
                 <div class="login_button" onclick="location.href='/logout'">로그아웃</a></div>
             </div>
+            <div class="user_area">
+                <div class="login_button" onclick="location.href='/preparing'">정보수정</a></div>
+            </div>
             <div class="user_info">${user.userName}님 반갑습니다.</div>
+            </c:if>
+
+            <!-- 관리자 로그인 상태 -->
+            <c:if test="${user.level == 0}">
+			<div class="login_area">
+                <div class="login_button" onclick="location.href='/logout'">로그아웃</a></div>
+            </div>
+            <div class="admin_area">
+                <div class="login_button" onclick="location.href='/'">메인 페이지</a></div>
+            </div>
             </c:if>
 		</div>
 

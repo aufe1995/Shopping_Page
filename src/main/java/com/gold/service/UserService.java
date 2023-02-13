@@ -50,6 +50,8 @@ public class UserService implements UserDetailsService {
 
     public UserVo userLogin(UserVo user) throws Exception{
 
+        if (user == null) throw new UsernameNotFoundException("Not Found account.");
+
         return userMapper.userLogin(user);
     }
 }

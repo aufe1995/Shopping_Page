@@ -38,7 +38,7 @@
                 <div class="login_button" onclick="location.href='/logout'">로그아웃</a></div>
             </div>
             <div class="admin_area">
-                <div class="login_button" onclick="location.href='/'">메인 페이지</a></div>
+                <div class="login_button" onclick="location.href='/admin'">관리자 페이지</a></div>
             </div>
             </c:if>
 		</div>
@@ -58,6 +58,7 @@
 		</div>
 
 		<div class="clearfix"></div>
+		<hr>
 
 	</div>
 

@@ -1,15 +1,27 @@
 package com.gold.Controller;
 
+import com.gold.service.BrandService;
+import com.gold.service.ProductService;
+import com.gold.vo.BrandVo;
+import com.gold.vo.ProductVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdminController {
 
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+
+    @Autowired
+    private BrandService brandService;
+
+    @Autowired
+    private ProductService productService;
 
     //관리자 페이지
     @GetMapping("/admin")
@@ -29,6 +41,19 @@ public class AdminController {
         return "admin/addBrand";
     }
 
+    //브랜드 등록 실행
+    @PostMapping("/admin/addBrandAction.do")
+    public String addBrandAction(BrandVo brandVo, RedirectAttributes rttr) throws Exception {
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 브랜드 등록 실행");
+
+        brandService.addBrand(brandVo);
+
+        rttr.addFlashAttribute("add_result", brandVo.getBrandName());
+
+        return "redirect:/admin/main";
+    }
+
     //브랜드 수정 페이지
     @GetMapping("/admin/changeBrand")
     public String changeBrandPage() {
@@ -45,6 +70,19 @@ public class AdminController {
         logger.info(">>>>>>>>>>>>>>>>>>> 관리자 물품 등록 페이지 진입");
 
         return "admin/addProduct";
+    }
+
+    //물품 등록 실행
+    @PostMapping("/admin/addProductAction.do")
+    public String addProductAction(ProductVo productVo, RedirectAttributes rttr) throws Exception {
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 물품 등록 실행");
+
+        productService.addProduct(productVo);
+
+        rttr.addFlashAttribute("add_result", productVo.getProductName());
+
+        return "redirect:/admin/main";
     }
 
     //물품 수정 페이지

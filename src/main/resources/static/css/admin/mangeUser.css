@@ -53,17 +53,24 @@
 .admin_navi_warp li a:active {color: black;}
 .admin_navi_warp li a:hover {color: black;}
 
+.admin_list_selected{
+    background-color: #c8c8c8;
+}
+
 .content_area {
     width: 80%;
     float: left;
     height: 500px;
 }
 
-.content_area div{
-    margin-top: 150px;
-    text-align: center;
+.content_subject{
     font-size: 20px;
     font-weight: bolder;
+    padding-left: 15px;
+    background-color: #C46162;
+    height: 60px;
+    line-height: 60px;
+    color: white;
 }
 
 /* float 속성 해제 */

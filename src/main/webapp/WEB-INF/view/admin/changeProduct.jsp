@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
-<link rel="stylesheet" href="/css/admin/main.css">
+<link rel="stylesheet" href="/css/admin/changeProduct.css">
 
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
@@ -34,7 +34,7 @@
                         <a class="admin_list" href="/admin/addProduct">물품 등록</a>
                     </li>
                     <li>
-                        <a class="admin_list" href="/admin/changeProduct">물품 관리</a>
+                        <a class="admin_list_selected" href="/admin/changeProduct">물품 관리</a>
                     </li>
                     <li>
                         <a class="admin_list" href="/admin/manageUser">회원 관리</a>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="content_area">
-            <div>수정 / 등록 할 항목을 선택하세요.</div>
+            <div class="content_subject"><span>물품 관리</span></div>
         </div>
         <div class="clearfix"></div>
     </div>

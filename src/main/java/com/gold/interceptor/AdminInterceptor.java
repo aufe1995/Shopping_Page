@@ -1,6 +1,8 @@
 package com.gold.interceptor;
 
 import com.gold.user.UserVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,12 +14,14 @@ import javax.servlet.http.HttpSession;
 @Component
 public class AdminInterceptor implements HandlerInterceptor {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdminInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
 
         HttpSession session = request.getSession();
 
-        UserVo user = (UserVo)session.getAttribute("level");
+        UserVo user = (UserVo)session.getAttribute("user");
 
         if(user == null || user.getLevel() > 0){
 

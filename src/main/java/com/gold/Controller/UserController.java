@@ -2,7 +2,7 @@ package com.gold.Controller;
 
 import com.gold.service.MailService;
 import com.gold.service.UserService;
-import com.gold.user.UserVo;
+import com.gold.vo.UserVo;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -4,23 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gold.mappers.UserMapper">
     <!--로그인-->
-    <select id="getUserAccount" resultType="com.gold.user.UserVo">
+    <select id="getUserAccount" resultType="com.gold.vo.UserVo">
         SELECT * FROM USER
         WHERE USER_ID = #{userID};
     </select>
-    <select id="userLogin" resultType="com.gold.user.UserVo">
+    <select id="userLogin" resultType="com.gold.vo.UserVo">
         SELECT * FROM USER
         WHERE USER_ID = #{userID};
     </select>
 
     <!--회원가입-->
-    <insert id="saveUser" parameterType="com.gold.user.UserVo">
+    <insert id="saveUser" parameterType="com.gold.vo.UserVo">
         INSERT INTO USER (USER_ID, USER_PW, USER_NAME, USER_MAIL, USER_ZIP, USER_ADR, USER_DADR, LEVEL, ADD_DATE, POINT)
         VALUES(#{userID},#{userPW},#{userName},#{userMail},#{userZIP},#{userADR},#{userDADR}, '1', now(), '0');
     </insert>
 
     <!--아이디 중복검사-->
-    <select id="idCheck" resultType="int" parameterType="com.gold.user.UserVo">
+    <select id="idCheck" resultType="int" parameterType="com.gold.vo.UserVo">
         SELECT COUNT(*) AS cnt FROM USER
         WHERE USER_ID = #{userID};
     </select>

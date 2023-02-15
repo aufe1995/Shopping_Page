@@ -1,7 +1,7 @@
 package com.gold.service;
 
 import com.gold.mappers.UserMapper;
-import com.gold.user.UserVo;
+import com.gold.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;

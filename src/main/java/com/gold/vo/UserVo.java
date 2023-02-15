@@ -1,4 +1,4 @@
-package com.gold.user;
+package com.gold.vo;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

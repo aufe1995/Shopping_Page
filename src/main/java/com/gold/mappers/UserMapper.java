@@ -1,6 +1,6 @@
 package com.gold.mappers;
 
-import com.gold.user.UserVo;
+import com.gold.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     UserVo getUserAccount(String userID);
     void saveUser(UserVo userVO);
-    public int idCheck(String userID);
-    public UserVo userLogin(UserVo userVo);
+    int idCheck(String userID);
+    UserVo userLogin(UserVo userVo);
 }

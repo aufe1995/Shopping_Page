@@ -1,6 +1,6 @@
 package com.gold.interceptor;
 
-import com.gold.user.UserVo;
+import com.gold.vo.UserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

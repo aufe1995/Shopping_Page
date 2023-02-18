@@ -8,8 +8,6 @@
 <link rel="stylesheet" href="/css/admin/addBrand.css">
 
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -45,11 +43,56 @@
 
         <div class="content_area">
             <div class="content_subject"><span>브랜드 등록</span></div>
+            <form id="content_warp" method="post" action="/admin/addBrandAction.do">
+                <div class="content_section">
+                    <div class="content_title">브랜드 이름</div>
+                    <input class="content_box" type="text" name="brandName" id="brandName">
+                </div>
+                <div class="content_section">
+                    <div class="content_title">국가 코드</div>
+                    <select name="countryCode" id="countryCode">
+                        <option value="none" selected>=== 선택 ===</option>
+                        <option value="410">대한민국</option>
+                        <option value="840">미국</option>
+                        <option value="826">영국</option>
+                        <option value="329">일본</option>
+                        <option value="276">독일</option>
+                        <option value="250">프랑스</option>
+                        <option value="380">이탈리아</option>
+                    </select>
+                </div>
+                <div class="content_section">
+                    <div class="content_title">설립년도</div>
+                    <input class="content_box" type="number" name="establishYear" id="establishYear" min="1800" max="2999">
+                </div>
+                <div class="content_section">
+                    <div class="content_title">브랜드 설명</div>
+                    <input class="content_box" type="text" name="brandDesc" id="brandDesc">
+                </div>
+                <div id="submit_section">
+                    <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return brandAddCheck()" >확인</button>
+                    <button class="submit_button" type="button" class="btn btn-primary" onclick="location.href='/admin'">취소</button>
+                </div>
+            </form>
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
+<script type="text/javascript">
 
+    function brandAddCheck(){
+        if(!content_warp.brandName.value.length && !content_warp.establishYear.value.length && !content_warp.brandDesc.value.length){
+            alert("모든 항목을 입력해주세요.");
+            return false;
+        }
+        if(content_warp.countryCode.value.none){
+            alert("모든 항목을 입력해주세요.");
+            return false;
+        }
+
+    }
+
+</script>
 </body>
 </html>
 <!-- 하단 메뉴 -->

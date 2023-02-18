@@ -5,8 +5,8 @@
 <mapper namespace="com.gold.mappers.BrandMapper">
     <!-- 브랜드 추가 -->
     <select id="addBrand" parameterType="com.gold.vo.BrandVo">
-        INSERT INTO BRAND (BRAND_NAME, COUNTRY_CODE, ESTABLE_YEAR, BRAND_DESC)
-        VALUES(#{brandName},#{countryCode},#{estableYear},#{brandDesc});
+        INSERT INTO BRAND (BRAND_NAME, COUNTRY_CODE, ESTABLISH_YEAR, BRAND_DESC)
+        VALUES(#{brandName},#{countryCode},#{establishYear},#{brandDesc});
     </select>
 
 </mapper>

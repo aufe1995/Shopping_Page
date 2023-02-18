@@ -51,7 +51,7 @@ public class AdminController {
 
         rttr.addFlashAttribute("add_result", brandVo.getBrandName());
 
-        return "redirect:/admin/main";
+        return "redirect:/admin";
     }
 
     //브랜드 수정 페이지
@@ -82,7 +82,7 @@ public class AdminController {
 
         rttr.addFlashAttribute("add_result", productVo.getProductName());
 
-        return "redirect:/admin/main";
+        return "redirect:/admin";
     }
 
     //물품 수정 페이지

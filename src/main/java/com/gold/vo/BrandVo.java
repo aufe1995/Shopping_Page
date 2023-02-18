@@ -11,7 +11,7 @@ public class BrandVo {
 
     private int countryCode;
 
-    private int estableYear;
+    private int establishYear;
 
     private String brandDesc;
 }

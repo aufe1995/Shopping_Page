@@ -14,7 +14,7 @@ public class BrandService {
     public void addBrand(BrandVo brandVo) throws Exception{
         brandVo.setBrandName(brandVo.getBrandName());
         brandVo.setCountryCode(brandVo.getCountryCode());
-        brandVo.setEstableYear(brandVo.getEstableYear());
+        brandVo.setEstablishYear(brandVo.getEstablishYear());
         brandVo.setBrandDesc(brandVo.getBrandDesc());
         brandMapper.addBrand(brandVo);
     }

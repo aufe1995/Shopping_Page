@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gold.mappers.BrandMapper">
     <!-- 브랜드 추가 -->
-    <select id="addBrand" parameterType="com.gold.vo.BrandVo">
+    <select id="addBrand" parameterType="com.gold.model.BrandVo">
         INSERT INTO BRAND (BRAND_NAME, COUNTRY_CODE, ESTABLISH_YEAR, BRAND_DESC)
         VALUES(#{brandName},#{countryCode},#{establishYear},#{brandDesc});
     </select>

@@ -73,6 +73,47 @@
     color: white;
 }
 
+#content_warp {
+    height: 440px;
+}
+
+.content_title {
+    font-size: 20px;
+    font-weight: 900;
+    width: 200px;
+    margin: 25px 5px 25px 105px;
+    display: inline-block;
+}
+
+.content_box {
+    font-size: 20px;
+    width: 360px;
+    height: 30px;
+    margin: 25px 5px 25px 5px;
+    display: inline-block;
+}
+
+option {
+    text-align: center;
+}
+
+#submit_section {
+    margin-top: 20px;
+    margin-left: 250px;
+    width: 300px;
+}
+
+.submit_button {
+    width: 100px;
+    height: 40px;
+    margin: 0 20px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
 /* float 속성 해제 */
 .clearfix{
     clear: both;

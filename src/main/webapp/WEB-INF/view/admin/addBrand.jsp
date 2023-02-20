@@ -50,8 +50,8 @@
                 </div>
                 <div class="content_section">
                     <div class="content_title">국가 코드</div>
-                    <select name="countryCode" id="countryCode">
-                        <option value="none" selected>=== 선택 ===</option>
+                    <select class="content_box" name="countryCode" id="countryCode">
+                        <option value="0" selected>------------------ 국가 선택 ------------------</option>
                         <option value="410">대한민국</option>
                         <option value="840">미국</option>
                         <option value="826">영국</option>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="content_section">
                     <div class="content_title">설립년도</div>
-                    <input class="content_box" type="number" name="establishYear" id="establishYear" min="1800" max="2999">
+                    <input class="content_box" type="number" name="establishYear" id="establishYear" min="1000" max="2999">
                 </div>
                 <div class="content_section">
                     <div class="content_title">브랜드 설명</div>
@@ -85,7 +85,7 @@
             alert("모든 항목을 입력해주세요.");
             return false;
         }
-        if(content_warp.countryCode.value.none){
+        if(content_warp.countryCode.value == '0'){
             alert("모든 항목을 입력해주세요.");
             return false;
         }

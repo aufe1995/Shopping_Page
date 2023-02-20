@@ -1,7 +1,7 @@
 package com.gold.service;
 
 import com.gold.mappers.BrandMapper;
-import com.gold.vo.BrandVo;
+import com.gold.model.BrandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

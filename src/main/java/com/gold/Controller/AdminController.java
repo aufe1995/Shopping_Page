@@ -2,8 +2,8 @@ package com.gold.Controller;
 
 import com.gold.service.BrandService;
 import com.gold.service.ProductService;
-import com.gold.vo.BrandVo;
-import com.gold.vo.ProductVo;
+import com.gold.model.BrandVo;
+import com.gold.model.ProductVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

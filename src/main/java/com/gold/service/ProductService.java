@@ -1,7 +1,7 @@
 package com.gold.service;
 
 import com.gold.mappers.ProductMapper;
-import com.gold.vo.ProductVo;
+import com.gold.model.ProductVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

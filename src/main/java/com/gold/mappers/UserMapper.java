@@ -1,6 +1,6 @@
 package com.gold.mappers;
 
-import com.gold.vo.UserVo;
+import com.gold.model.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 
 

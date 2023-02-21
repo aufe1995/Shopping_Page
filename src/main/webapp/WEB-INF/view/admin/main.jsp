@@ -44,7 +44,7 @@
         </div>
 
         <div class="content_area">
-            <div>수정 / 등록 할 항목을 선택하세요.</div>
+            <div>등록 및 관리 할 항목을 선택하세요.</div>
         </div>
         <div class="clearfix"></div>
     </div>

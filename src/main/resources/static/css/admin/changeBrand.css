@@ -57,10 +57,25 @@
     background-color: #c8c8c8;
 }
 
+.search_warp{
+    height: 50px;
+    float: right;
+}
+
+.search_btn{
+    height: 30px;
+    width: 80px;
+}
+
+#keyword{
+    height: 30px;
+    width: 230px;
+}
+
 .content_area {
     width: 80%;
     float: left;
-    height: 500px;
+    height: 750px;
 }
 
 .content_subject{
@@ -71,6 +86,86 @@
     height: 60px;
     line-height: 60px;
     color: white;
+}
+
+.content_warp {
+    height: 550px;
+    padding: 20px 35px;
+}
+
+.brand_table {
+    border: 1px solid #d3d8e1;
+    text-align: center;
+}
+
+.brand_table td {
+	padding: 10px 3px;
+	border: 1px solid #e9ebf0;
+	overflow: hidden;
+}
+
+.brand_table thread{
+	background-color: #f8f9fd;
+	font-weight: 600;
+}
+
+.brand_num {
+    width: 80px;
+}
+
+.brand_name {
+    width: 150px;
+}
+
+.brand_country {
+    width: 120px;
+}
+
+.brand_year {
+    width: 120px;
+}
+
+.brand_desc {
+    width: 250px;
+}
+
+/* 페이지 버튼 인터페이스 */
+.page_warp{
+	text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.page_warp a{
+	color : black;
+}
+
+.page_content{
+    list-style: none;
+    display: inline-block;
+}
+
+.page_btn {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.next, .prev {
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+.next a, .prev a {
+    color: #ccc;
+}
+
+/* 현재 페이지 버튼 */
+.active{
+	border : 2px solid black;
+	font-weight:400;
 }
 
 /* float 속성 해제 */

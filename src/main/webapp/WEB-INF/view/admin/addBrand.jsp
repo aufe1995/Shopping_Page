@@ -49,7 +49,7 @@
                     <input class="content_box" type="text" name="brandName" id="brandName">
                 </div>
                 <div class="content_section">
-                    <div class="content_title">국가 코드</div>
+                    <div class="content_title">본사</div>
                     <select class="content_box" name="countryCode" id="countryCode">
                         <option value="0" selected>------------------ 국가 선택 ------------------</option>
                         <option value="410">대한민국</option>

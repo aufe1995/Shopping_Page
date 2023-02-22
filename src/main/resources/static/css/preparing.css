@@ -1,18 +1,16 @@
 /* 내용 부분 크기 */
 .wrapper {
-    max-width: 1020px;
-    margin: 0 auto;
     background-color: #FFAEC8;
 }
 
-.warp {
+.wrap {
     width: 1080px;
     margin: auto;
 }
 
-.content_warp {
+.content_wrap {
     width: 1020px;
-    height: 500px;
+    height: 600px;
     line-height: 500px;
     text-align: center;
     display: inline-block;

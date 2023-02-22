@@ -12,7 +12,7 @@
 <body>
 <div class="wrapper">
     <div class="wrap">
-        <div class="content_warp">
+        <div class="content_wrap">
             <div class="content_box">
                 <span>현재 페이지는 준비중입니다.</span>
                 <button class="content_button" onclick="location.href='/'">처음으로</button>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +23,7 @@
         <hr class="boundary">
 
         <div class="navi_bar_area">
-            <div class="admin_navi_warp">
+            <div class="admin_navi_wrap">
                 <ul>
                     <li>
                         <a class="admin_list" href="/admin/addBrand">브랜드 등록</a>
@@ -48,19 +48,21 @@
             <div class="content_subject"><span>브랜드 관리</span></div>
 
 
-            <div class="content_warp">
+            <div class="content_wrap">
 
-                        <!-- 검색 -->
-                        <div class="search_warp">
-                            <form id="search_form" action="/admin/changeBrand" method="get">
-                                <input type="hidden" name="pageNum" id="pageNum" value='<c:out value="${pageMaker.criteria.pageNum }"></c:out>'>
-                                <input type="hidden" name="pageAmount" id="pageAmount" value='${pageMaker.criteria.pageAmount}'>
-                                <input type="text" name="keyword" id="keyword" value='<c:out value="${pageMaker.criteria.keyword}"></c:out>'>
-                                <button class="search_btn" onclick="return searchCheck()"> 검색 </button>
-                            </form>
-                        </div>
+                <!-- 검색 -->
+                <div class="search_wrap">
+                    <form id="search_form" action="/admin/changeBrand" method="get">
+                        <input type="hidden" name="pageNum" id="pageNum" value='<c:out value="${pageMaker.criteria.pageNum }"></c:out>'>
+                        <input type="hidden" name="pageAmount" id="pageAmount" value='${pageMaker.criteria.pageAmount}'>
+                        <input type="text" name="keyword" id="keyword" value='<c:out value="${pageMaker.criteria.keyword}"></c:out>'>
+                        <button class="search_btn" onclick="return searchCheck()"> 검색 </button>
+                    </form>
+                </div>
+
                 <div class="clearfix"></div>
-                <!-- 게시물 없을 경우 -->
+
+                <!-- 게시물 있을 경우 -->
                 <c:if test="${listEmpty != 'empty'}">
                 <table class="brand_table">
                     <thread>
@@ -74,11 +76,24 @@
                     <thread>
                     <c:forEach items="${list}" var="list">
                         <tr>
-                            <td><c:out value="${list.brandID}"></c:out></td>
-                            <td><c:out value="${list.brandName}"></c:out></td>
-                            <td><c:out value="${list.countryCode}"></c:out></td>
-                            <td><c:out value="${list.establishYear}"></c:out></td>
-                            <td><c:out value="${list.brandDesc}"></c:out></td>
+                            <td><c:out value="${list.brandID}"/></td>
+                            <td>
+                                <a class="move" herf='<c:out value="${list.brandID}"/>'>
+                                    <c:out value="${list.brandName}"/>
+                                </a>
+                            </td>
+                            <td><c:out value="${list.countryCode}"/></td>
+                            <td><c:out value="${list.establishYear}"/></td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${fn:length(list.brandDesc) > 10}">
+                                        <c:out value="${fn:substring(list.brandDesc, 0, 9)}"/>...
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="${list.brandDesc}"/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr>
                      </c:forEach>
                 </table>
@@ -89,7 +104,7 @@
                     <div class="empty">등록된 브랜드가 없습니다.</div>
                 </c:if>
             </div>
-            <div class="page_warp">
+            <div class="page_wrap">
                 <ul class="page_content">
 
                     <!-- 이전 버튼 -->
@@ -131,6 +146,18 @@
         event.preventDefault();
 
         $('#page_form').find("input[name='pageNum']").val($(this).attr("href"));
+
+        page_form.submit();
+
+    });
+
+    $(".move").on("click", function() {
+
+        event.preventDefault();
+
+        $('#page_form').append("<input type='hidden' name='brandID' value='"+ $(this).attr("href") + "'>");
+
+        $('#page_form').attr("action", "/admin/brandDetail");
 
         page_form.submit();
 

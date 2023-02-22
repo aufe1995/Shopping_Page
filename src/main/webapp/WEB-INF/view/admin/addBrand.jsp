@@ -65,11 +65,11 @@
                     <div class="content_title">설립년도</div>
                     <input class="content_box" type="number" name="establishYear" id="establishYear" min="1000" max="2999">
                 </div>
-                <div class="content_section">
+                <div class="content_big_section">
                     <div class="content_title">브랜드 설명</div>
-                    <input class="content_box" type="text" name="brandDesc" id="brandDesc">
+                    <textarea class="content_big_box" type="text" name="brandDesc" id="brandDesc"></textarea>
                 </div>
-                <div id="submit_section">
+                <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return brandAddCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="location.href='/admin'">취소</button>
                 </div>

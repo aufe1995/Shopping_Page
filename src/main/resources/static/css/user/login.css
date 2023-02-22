@@ -1,18 +1,16 @@
 /* 내용 부분 크기 */
 .wrapper {
-    max-width: 1020px;
-    margin: 0 auto;
     background-color: #FFAEC8;
 }
 
-.warp {
+.wrap {
     width: 1080px;
     margin: auto;
 }
 
 /* 로그인 이름 영역 */
 .title_area {
-    padding: 20px 15px;
+    padding: 20px 320px;
 }
 
 .title_area>span{
@@ -21,22 +19,21 @@
 }
 
 .boundary {
-    width: 1019px;
+    width: 480px;
     background-color: black;
     height: 5px;
-    margin-bottom: 25px;
-    float: center;
+    margin: 0 300px;
 }
 
 /* 버튼 및 입력 영역 */
 .login_content {
     padding: 50px 150px;
-	height: 350px;
+	height: 400px;
 	text-align: center;
 }
 
 /* 로그인 영역 */
-.login_warp {
+.login_wrap {
     height: 40%;
     padding: 15px;
     display: inline-block;
@@ -73,7 +70,7 @@
 }
 
 /* 회원가입 영역 */
-.account_warp {
+.account_wrap {
     height: 40%;
     padding: 15px;
     display: inline-block;

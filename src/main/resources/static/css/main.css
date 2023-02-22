@@ -1,11 +1,11 @@
 /* 내용 부분 크기 */
 .wrapper {
-    max-width: 1020px;
-    margin: 0 auto;
+    background-color: #FFAEC8;
 }
 
-.warp {
+.wrap {
     width: 1080px;
+    margin: auto;
 }
 
 

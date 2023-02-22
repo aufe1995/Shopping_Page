@@ -25,7 +25,7 @@
 
         <div class="login_content">
 
-            <form class="login_warp" action="/user/loginAction.do" method="post">
+            <form class="login_wrap" action="/user/loginAction.do" method="post">
 
                 <c:if test="${result == 0}">
                     <div class="login_warning" id="login_warning">아이디 혹은 비밀번호를 확인해주세요.</div>
@@ -40,7 +40,7 @@
 
             </form>
 
-            <div class="account_warp">
+            <div class="account_wrap">
                 <button class="account_button" type="button" onclick="location.href='/preparing'">계정 찾기</button>
                 <button class="account_button" type="button" onclick="location.href='/user/join'">회원가입</button>
             </div>
@@ -48,7 +48,7 @@
             <div class="clearfix"></div>
 
         </div>
-
+    </div>
 </div>
 <script type="text/javascript">
     <%-- 아이디 입력 값이 입력됐을 때 --%>

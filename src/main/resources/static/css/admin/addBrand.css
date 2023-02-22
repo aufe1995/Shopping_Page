@@ -1,17 +1,17 @@
 /* 내용 부분 크기 */
 .wrapper {
-    max-width: 1020px;
-    margin: 0 auto;
+    background-color: #FFAEC8;
 }
 
-.warp {
+.wrap {
     width: 1080px;
+    margin: auto;
 }
 
 /* 관리자 페이지 이름 영역 */
 .title_area {
     padding: 20px 15px;
-    background-color: #FFAEC8;
+    background-color: #9b3f73;
 }
 
 .title_area>span{
@@ -20,14 +20,15 @@
 }
 
 .boundary {
-    width: 1019px;
+    width: 100%;
     background-color: black;
     height: 3px;
 }
 
 .admin_navi_warp{
     width: 20%;
-    height: 500px;
+    height: 750px;
+    background-color: #F1EEEE;
     float: left;
 }
 
@@ -60,28 +61,31 @@
 .content_area {
     width: 80%;
     float: left;
-    height: 500px;
+    height: 750px;
+    background-color: white;
 }
 
 .content_subject{
     font-size: 20px;
     font-weight: bolder;
     padding-left: 15px;
-    background-color: #C46162;
+    background-color: #7F1746;
     height: 60px;
     line-height: 60px;
     color: white;
 }
 
-#content_warp {
-    height: 440px;
+.content_section {
+    height: 50px;
+    margin: 50px;
+    display: flex;
 }
 
 .content_title {
     font-size: 20px;
     font-weight: 900;
     width: 200px;
-    margin: 25px 5px 25px 105px;
+    margin-left: 105px;
     display: inline-block;
 }
 
@@ -89,7 +93,19 @@
     font-size: 20px;
     width: 360px;
     height: 30px;
-    margin: 25px 5px 25px 5px;
+    display: inline-block;
+}
+
+.content_big_section {
+    height: 120px;
+    margin: 50px;
+    display: flex;
+}
+
+.content_big_box {
+    font-size: 20px;
+    width: 360px;
+    height: 110px;
     display: inline-block;
 }
 
@@ -97,7 +113,7 @@ option {
     text-align: center;
 }
 
-#submit_section {
+.submit_section {
     margin-top: 20px;
     margin-left: 250px;
     width: 300px;

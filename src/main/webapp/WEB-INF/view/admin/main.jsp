@@ -22,7 +22,7 @@
         <hr class="boundary">
 
         <div class="navi_bar_area">
-            <div class="admin_navi_warp">
+            <div class="admin_navi_wrap">
                 <ul>
                     <li>
                         <a class="admin_list" href="/admin/addBrand">브랜드 등록</a>

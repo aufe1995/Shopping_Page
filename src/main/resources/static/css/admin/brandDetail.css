@@ -1,0 +1,136 @@
+/* 내용 부분 크기 */
+.wrapper {
+    background-color: #FFAEC8;
+}
+
+.wrap {
+    width: 1080px;
+    margin: auto;
+}
+
+/* 관리자 페이지 이름 영역 */
+.title_area {
+    padding: 20px 15px;
+    background-color: #9b3f73;
+}
+
+.title_area>span{
+	font-size : 25px;
+	font-weight: 900;
+}
+
+.boundary {
+    width: 100%;
+    background-color: black;
+    height: 3px;
+}
+
+.admin_navi_warp{
+    width: 20%;
+    height: 750px;
+    background-color: #F1EEEE;
+    float: left;
+}
+
+.admin_navi_warp li{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.admin_navi_warp li a{
+    display: block;
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.admin_navi_warp li a:link {color: black;}
+.admin_navi_warp li a:visited {color: black;}
+.admin_navi_warp li a:active {color: black;}
+.admin_navi_warp li a:hover {color: black;}
+
+.admin_list_selected{
+    background-color: #c8c8c8;
+}
+
+.content_area {
+    width: 80%;
+    float: left;
+    height: 750px;
+    background-color: white;
+}
+
+.content_subject{
+    font-size: 20px;
+    font-weight: bolder;
+    padding-left: 15px;
+    background-color: #7F1746;
+    height: 60px;
+    line-height: 60px;
+    color: white;
+}
+
+.content_section {
+    height: 50px;
+    margin: 50px;
+    display: flex;
+}
+
+.content_title {
+    font-size: 20px;
+    font-weight: 900;
+    width: 200px;
+    margin-left: 105px;
+    display: inline-block;
+}
+
+.content_box {
+    font-size: 20px;
+    width: 360px;
+    height: 30px;
+    display: inline-block;
+}
+
+.content_big_section {
+    height: 120px;
+    margin: 50px;
+    display: flex;
+}
+
+.content_big_box {
+    font-size: 20px;
+    width: 360px;
+    height: 110px;
+    display: inline-block;
+}
+
+option {
+    text-align: center;
+}
+
+.submit_section {
+    margin-top: 20px;
+    margin-left: 250px;
+    width: 300px;
+}
+
+.submit_button {
+    width: 100px;
+    height: 40px;
+    margin: 0 20px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+/* float 속성 해제 */
+.clearfix{
+    clear: both;
+}

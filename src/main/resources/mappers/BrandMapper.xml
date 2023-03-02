@@ -24,5 +24,9 @@
             WHERE BRAND_NAME LIKE CONCAT('%',#{keyword},'%')
         </if>
     </select>
-
+    <!-- 브랜드 상세 화면 -->
+    <select id="brandGetDetail" resultType="com.gold.model.BrandVo">
+        SELECT * FROM BRAND
+        WHERE BRAND_ID = #{brandID}
+    </select>
 </mapper>

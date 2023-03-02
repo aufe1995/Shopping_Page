@@ -31,8 +31,6 @@ public class BrandVo {
             this.countryCode = "프랑스";
         }else if(countryCode.equals("380")){
             this.countryCode = "이탈리아";
-        }else {
-            this.countryCode = "없음";
         }
     }
 }

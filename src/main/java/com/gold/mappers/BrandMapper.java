@@ -13,4 +13,6 @@ public interface BrandMapper {
     List<BrandVo> brandGetList(Criteria criteria);
 
     int brandGetTotal(Criteria criteria);
+
+    BrandVo brandGetDetail(int brandID);
 }

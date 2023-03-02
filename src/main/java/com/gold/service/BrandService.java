@@ -33,4 +33,8 @@ public class BrandService {
     public int brandGetTotal(Criteria criteria) throws Exception{
         return brandMapper.brandGetTotal(criteria);
     }
+
+    public BrandVo brandGetDetail(int brandID) throws Exception {
+        return brandMapper.brandGetDetail(brandID);
+    }
 }

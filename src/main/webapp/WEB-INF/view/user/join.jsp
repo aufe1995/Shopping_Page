@@ -60,7 +60,7 @@
                     <button class="join_button" type="button" onclick="authCheck()" id="authChk" value="false">확인</button>
                 </div>
 
-                <div id="address_warp">
+                <div id="address_wrap">
                     <div class="join_title">주소</div>
                     <input class="input_small_box" type="text" name="userZIP" id="userZIP" maxlength="20" readonly="readonly">
                     <button class="join_button" type="button" onclick="addressFind()" id="ZIPFind">주소 찾기</button>
@@ -85,34 +85,34 @@
     <%-- 아이디 입력 값이 변경됐을 때 --%>
     $('#userID').keyup(function() {
         $('#userIdChk').attr('value','N');
-        $('#id_warp span').html('X');
-        $('#id_warp span').attr('style','color:red');
+        $('#id_wrap span').html('X');
+        $('#id_wrap span').attr('style','color:red');
     });
 
     <%-- 비밀번호 확인 입력 값이 변경됐을 때 --%>
     const pwValidation = /^[a-zA-Z0-9!,@,#,$,%,^,&,*,?,_,~]{8,16}$/;
 
     $('#userPW').keyup(function(){
-        $('#password_warp span').html('X');
-        $('#password_warp span').attr('style', 'color:red');
-        $('#pw_check_warp span').html('');
+        $('#password_wrap span').html('X');
+        $('#password_wrap span').attr('style', 'color:red');
+        $('#pw_check_wrap span').html('');
 
         if(pwValidation.test($('#userPW').val())){
-            $('#password_warp span').html('√');
-            $('#password_warp span').attr('style', 'color:green');
+            $('#password_wrap span').html('√');
+            $('#password_wrap span').attr('style', 'color:green');
         } else {
-            $('#password_warp span').html('X');
-            $('#password_warp span').attr('style', 'color:red');
+            $('#password_wrap span').html('X');
+            $('#password_wrap span').attr('style', 'color:red');
         }
     });
 
     $('#pwCheck').keyup(function(){
         if($('#userPW').val() == $('#pwCheck').val()){
-            $('#pw_check_warp span').html('√');
-            $('#pw_check_warp span').attr('style', 'color:green');
+            $('#pw_check_wrap span').html('√');
+            $('#pw_check_wrap span').attr('style', 'color:green');
         } else{
-            $('#pw_check_warp span').html('X');
-            $('#pw_check_warp span').attr('style', 'color:red');
+            $('#pw_check_wrap span').html('X');
+            $('#pw_check_wrap span').attr('style', 'color:red');
         }
     });
 
@@ -133,8 +133,8 @@
                 success : function (data) {
                     if(data == 0){
                         alert("이용 가능한 아이디입니다.");
-                        $('#id_warp span').html('√');
-                        $('#id_warp span').attr('style','color:green');
+                        $('#id_wrap span').html('√');
+                        $('#id_wrap span').attr('style','color:green');
                         $('#userIdChk').attr('value','Y');
                     } else {
                         alert("중복된 아이디입니다. 다시 입력해주세요.");

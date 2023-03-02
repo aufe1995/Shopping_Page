@@ -78,6 +78,16 @@ public class AdminController {
         return "admin/changeBrand";
     }
 
+    @GetMapping("/admin/brandDetail")
+    public void brandDetailPage(int brandID, Criteria criteria, Model model) throws Exception {
+
+        model.addAttribute("criteria", criteria);
+
+        model.addAttribute("brandDetail", brandService.brandGetDetail(brandID));
+
+    }
+
+
     //물품 등록 페이지
     @GetMapping("/admin/addProduct")
     public String AddProductPage() {

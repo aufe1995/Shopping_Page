@@ -44,7 +44,10 @@
 		</div>
 
 		<div class="search_area">
-			<h1>Search area</h1>
+		    <div class="input_area">
+                <input class="search_input">
+                <button class="search_button">검색</button>
+            </div>
 		</div>
 
 		<div class="menu_area">

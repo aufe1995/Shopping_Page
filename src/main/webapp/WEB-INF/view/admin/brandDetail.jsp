@@ -43,10 +43,14 @@
 
         <div class="content_area">
             <div class="content_subject"><span>브랜드 상세</span></div>
-            <form id="content_warp" method="post" action="/admin/addBrandAction.do">
+            <form id="content_warp" method="get">
+                <div class="content_section">
+                    <div class="content_title">브랜드 번호</div>
+                    <div class="content_box" name="brandID" id="brandID" ><c:out value='${brandDetail.brandID}'></c:out></div>
+                </div>
                 <div class="content_section">
                     <div class="content_title">브랜드 이름</div>
-                    <input class="content_box" type="text" name="brandName" id="brandName">
+                    <input class="content_box" type="text" name="brandName" id="brandName" value="<c:out value='${brandDetail.brandName}'></c:out>">
                 </div>
                 <div class="content_section">
                     <div class="content_title">본사</div>
@@ -63,16 +67,20 @@
                 </div>
                 <div class="content_section">
                     <div class="content_title">설립년도</div>
-                    <input class="content_box" type="number" name="establishYear" id="establishYear" min="1000" max="2999">
+                    <input class="content_box" type="number" name="establishYear" id="establishYear" min="1000" max="2999" value="<c:out value='${brandDetail.establishYear}'></c:out>">
                 </div>
                 <div class="content_big_section">
                     <div class="content_title">브랜드 설명</div>
-                    <textarea class="content_big_box" type="text" name="brandDesc" id="brandDesc"></textarea>
+                    <textarea class="content_big_box" type="text" name="brandDesc" id="brandDesc" ><c:out value='${brandDetail.brandDesc}'></c:out></textarea>
                 </div>
                 <div class="submit_section">
-                    <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return brandAddCheck()" >확인</button>
+                    <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return brandChangeCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="location.href='/admin'">취소</button>
                 </div>
+                <input type="hidden" name="brandID" value="${brandDetail.brandID}">
+            	<input type="hidden" name="pageNum" value="${criteria.pageNum}">
+            	<input type="hidden" name="pageAmount" value="${criteria.pageAmount}">
+            	<input type="hidden" name="keyword" value="${criteria.keyword}">
             </form>
         </div>
         <div class="clearfix"></div>
@@ -80,13 +88,13 @@
 </div>
 <script type="text/javascript">
 
-    function brandAddCheck(){
+    function brandChangeCheck(){
         if(!content_warp.brandName.value.length && !content_warp.establishYear.value.length && !content_warp.brandDesc.value.length){
             alert("모든 항목을 입력해주세요.");
             return false;
         }
         if(content_warp.countryCode.value == '0'){
-            alert("모든 항목을 입력해주세요.");
+            alert("본사를 입력해주세요.");
             return false;
         }
 

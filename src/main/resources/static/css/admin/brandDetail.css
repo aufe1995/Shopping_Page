@@ -96,6 +96,10 @@
     display: inline-block;
 }
 
+#brandID{
+    text-align: center;
+}
+
 .content_big_section {
     height: 120px;
     margin: 50px;

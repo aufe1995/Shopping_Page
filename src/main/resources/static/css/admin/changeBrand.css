@@ -116,6 +116,10 @@
 	font-weight: 600;
 }
 
+.brand_table a {
+    text-decoration: underline;
+}
+
 .brand_num {
     width: 80px;
     background-color: black;

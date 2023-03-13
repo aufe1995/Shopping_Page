@@ -78,7 +78,7 @@
                         <tr>
                             <td><c:out value="${list.brandID}"/></td>
                             <td>
-                                <a class="move" herf='<c:out value="${list.brandID}"/>'>
+                                <a class="move" href='<c:out value="${list.brandID}"/>'>
                                     <c:out value="${list.brandName}"/>
                                 </a>
                             </td>

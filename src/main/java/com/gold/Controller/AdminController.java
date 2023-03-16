@@ -87,6 +87,16 @@ public class AdminController {
 
     }
 
+    @PostMapping("/admin/brandModify")
+    public String brandModifyAction(BrandVo brandVo, RedirectAttributes rttr) throws Exception {
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 브랜드 정보 수정");
+
+        brandService.brandModify(brandVo);
+
+        return "redirect:/admin/changeBrand";
+    }
+
 
     //물품 등록 페이지
     @GetMapping("/admin/addProduct")

@@ -15,4 +15,6 @@ public interface BrandMapper {
     int brandGetTotal(Criteria criteria);
 
     BrandVo brandGetDetail(int brandID);
+
+    int brandModify(BrandVo brandVo);
 }

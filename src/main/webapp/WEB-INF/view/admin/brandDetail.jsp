@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <link rel="stylesheet" href="/css/admin/brandDetail.css">
-
+<%-- ajax 사용을 위한 스크립트 추가 --%>
+<script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 </head>
 <body>
@@ -43,10 +44,10 @@
 
         <div class="content_area">
             <div class="content_subject"><span>브랜드 상세</span></div>
-            <form id="content_warp" method="get">
+            <form id="content_warp" action="/admin/brandModify" method="post">
                 <div class="content_section">
                     <div class="content_title">브랜드 번호</div>
-                    <div class="content_box" name="brandID" id="brandID" ><c:out value='${brandDetail.brandID}'></c:out></div>
+                    <input class="content_box" name="brandID" id="brandID" value="<c:out value='${brandDetail.brandID}'></c:out>" readonly/>
                 </div>
                 <div class="content_section">
                     <div class="content_title">브랜드 이름</div>
@@ -75,8 +76,10 @@
                 </div>
                 <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return brandChangeCheck()" >확인</button>
-                    <button class="submit_button" type="button" class="btn btn-primary" onclick="location.href='/admin'">취소</button>
+                    <button class="submit_button" type="button" class="btn btn-primary" onclick="cancelPage()">취소</button>
                 </div>
+            </form>
+            <form id="moveForm" method="get">
                 <input type="hidden" name="brandID" value="${brandDetail.brandID}">
             	<input type="hidden" name="pageNum" value="${criteria.pageNum}">
             	<input type="hidden" name="pageAmount" value="${criteria.pageAmount}">
@@ -88,6 +91,15 @@
 </div>
 <script type="text/javascript">
 
+    function cancelPage() {
+        event.preventDefault();
+
+        $("#page_brandID").remove();
+        $('#moveForm').attr("action", "/admin/changeBrand");
+        moveForm.submit();
+
+    }
+
     function brandChangeCheck(){
         if(!content_warp.brandName.value.length && !content_warp.establishYear.value.length && !content_warp.brandDesc.value.length){
             alert("모든 항목을 입력해주세요.");
@@ -98,6 +110,9 @@
             return false;
         }
 
+        event.preventDefault();
+
+        content_warp.submit();
     }
 
 </script>

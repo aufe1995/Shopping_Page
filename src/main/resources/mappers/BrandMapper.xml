@@ -29,4 +29,10 @@
         SELECT * FROM BRAND
         WHERE BRAND_ID = #{brandID}
     </select>
+    <!-- 브랜드 수정 -->
+    <update id="brandModify">
+        UPDATE BRAND SET
+        BRAND_NAME=#{brandName}, COUNTRY_CODE=#{countryCode}, ESTABLISH_YEAR=#{establishYear}, BRAND_DESC=#{brandDesc}
+        WHERE BRAND_ID = #{brandID}
+    </update>
 </mapper>

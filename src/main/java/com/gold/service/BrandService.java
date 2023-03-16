@@ -37,4 +37,13 @@ public class BrandService {
     public BrandVo brandGetDetail(int brandID) throws Exception {
         return brandMapper.brandGetDetail(brandID);
     }
+
+    public int brandModify(BrandVo brandVo) throws Exception {
+        brandVo.setBrandID(brandVo.getBrandID());
+        brandVo.setBrandName(brandVo.getBrandName());
+        brandVo.setCountryCode(brandVo.getCountryCode());
+        brandVo.setEstablishYear(brandVo.getEstablishYear());
+        brandVo.setBrandDesc(brandVo.getBrandDesc());
+        return brandMapper.brandModify(brandVo);
+    }
 }

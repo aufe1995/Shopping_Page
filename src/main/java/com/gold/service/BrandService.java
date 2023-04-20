@@ -13,8 +13,6 @@ import java.util.List;
 @Service
 public class BrandService {
 
-    private static final Logger log = LoggerFactory.getLogger(BrandService.class);
-
     @Autowired
     BrandMapper brandMapper;
 

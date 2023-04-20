@@ -43,29 +43,20 @@
 
         <div class="content_area">
             <div class="content_subject"><span>물품 등록</span></div>
-            <form id="content_warp" method="post" action="/admin/addproductAction.do">
+            <form id="content_warp" method="post" action="/admin/addProductAction.do">
                 <div class="content_section">
                     <div class="content_title">물품 이름</div>
                     <input class="content_box" type="text" name="productName" id="productName">
                 </div>
                 <div class="content_section">
-                    <div class="content_title">브랜드</div>
-                    <select name="brandID" id="brandID">
-                        <option value="none" selected>=== 선택 ===</option>
-                        <option value="410">대한민국</option>
-                        <option value="840">미국</option>
-                        <option value="826">영국</option>
-                        <option value="329">일본</option>
-                        <option value="276">독일</option>
-                        <option value="250">프랑스</option>
-                        <option value="380">이탈리아</option>
-                    </select>
+                    <div class="content_title">브랜드 아이디</div>
+                    <input class="content_box" type="int" name="brandID" id="brandID">
                 </div>
                 <div class="content_section">
                     <div class="content_title">제품코드</div>
                     <input class="content_box" type="text" name="productCode" id="productCode">
                 </div>
-                <div id="submit_section">
+                <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return productAddCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="location.href='/admin'">취소</button>
                 </div>

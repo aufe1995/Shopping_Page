@@ -8,5 +8,20 @@
         INSERT INTO PRODUCT (PRODUCT_NAME, BRAND_ID, PRODUCT_CODE)
         VALUES(#{productName},#{brandID},#{productCode});
     </insert>
-
+    <!-- 물품 목록 -->
+    <select id="productGetList" resultType="com.gold.model.ProductVo">
+        SELECT * FROM PRODUCT
+        <if test="keyword != null">
+            WHERE PRODUCT_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
+        ORDER BY PRODUCT_ID DESC
+        LIMIT #{pageReset}, #{pageAmount}
+    </select>
+    <!-- 물품 갯수 -->
+    <select id="productGetTotal" resultType="int">
+        SELECT COUNT(*) FROM PRODUCT
+        <if test="keyword != null">
+            WHERE PRODUCT_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
 </mapper>

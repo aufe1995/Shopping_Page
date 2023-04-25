@@ -25,21 +25,21 @@
     height: 3px;
 }
 
-.admin_navi_warp{
+.admin_navi_wrap{
     width: 20%;
     height: 750px;
     background-color: #F1EEEE;
     float: left;
 }
 
-.admin_navi_warp li{
+.admin_navi_wrap li{
     display: block;
     height: 50px;
     line-height: 50px;
     text-align: center;
 }
 
-.admin_navi_warp li a{
+.admin_navi_wrap li a{
     display: block;
     height: 100%;
     width: 95%;
@@ -49,10 +49,10 @@
     font-weight: bolder;
 }
 
-.admin_navi_warp li a:link {color: black;}
-.admin_navi_warp li a:visited {color: black;}
-.admin_navi_warp li a:active {color: black;}
-.admin_navi_warp li a:hover {color: black;}
+.admin_navi_wrap li a:link {color: black;}
+.admin_navi_wrap li a:visited {color: black;}
+.admin_navi_wrap li a:active {color: black;}
+.admin_navi_wrap li a:hover {color: black;}
 
 .admin_list_selected{
     background-color: #c8c8c8;

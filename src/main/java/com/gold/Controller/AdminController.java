@@ -122,9 +122,19 @@ public class AdminController {
 
     //물품 수정 페이지
     @GetMapping("/admin/changeProduct")
-    public String changeProductPage() {
+    public String changeProductPage(Criteria criteria, Model model) throws Exception {
 
         logger.info(">>>>>>>>>>>>>>>>>>> 관리자 물품 수정 페이지 진입");
+
+        List list = productService.productGetList(criteria);
+
+        if(!list.isEmpty()){
+            model.addAttribute("list", list);
+        }else{
+            model.addAttribute("listEmpty", "empty");
+        }
+
+        model.addAttribute("pageMaker", new PageMaker(criteria, productService.productGetTotal(criteria)));
 
         return "admin/changeProduct";
     }

@@ -25,21 +25,21 @@
     height: 3px;
 }
 
-.admin_navi_warp{
+.admin_navi_wrap{
     width: 20%;
     height: 750px;
     background-color: #F1EEEE;
     float: left;
 }
 
-.admin_navi_warp li{
+.admin_navi_wrap li{
     display: block;
     height: 50px;
     line-height: 50px;
     text-align: center;
 }
 
-.admin_navi_warp li a{
+.admin_navi_wrap li a{
     display: block;
     height: 100%;
     width: 95%;
@@ -49,13 +49,34 @@
     font-weight: bolder;
 }
 
-.admin_navi_warp li a:link {color: black;}
-.admin_navi_warp li a:visited {color: black;}
-.admin_navi_warp li a:active {color: black;}
-.admin_navi_warp li a:hover {color: black;}
+.admin_navi_wrap li a:link {color: black;}
+.admin_navi_wrap li a:visited {color: black;}
+.admin_navi_wrap li a:active {color: black;}
+.admin_navi_wrap li a:hover {color: black;}
 
 .admin_list_selected{
     background-color: #c8c8c8;
+}
+
+.search_wrap{
+    height: 50px;
+    float: right;
+    margin-right: 10px;
+}
+
+.search_btn{
+    height: 35px;
+    width: 80px;
+    margin: 0 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#keyword{
+    height: 30px;
+    width: 230px;
 }
 
 .content_area {
@@ -73,6 +94,101 @@
     height: 60px;
     line-height: 60px;
     color: white;
+}
+
+.content_wrap {
+    height: 550px;
+    padding: 20px 35px;
+}
+
+.product_table {
+    border: 1px solid #d3d8e1;
+    text-align: center;
+}
+
+.product_table td {
+	padding: 10px 3px;
+	border: 1px solid #e9ebf0;
+}
+
+.product_table thread{
+	background-color: #f8f9fd;
+	font-weight: 600;
+}
+
+.product_table a {
+    text-decoration: underline;
+}
+
+.product_num {
+    width: 80px;
+    background-color: black;
+    color: white;
+}
+
+.product_name {
+    width: 200px;
+    background-color: black;
+    color: white;
+}
+
+.brand_id {
+    width: 200px;
+    background-color: black;
+    color: white;
+}
+
+.product_code {
+    width: 250px;
+    background-color: black;
+    color: white;
+}
+
+/* 게시물 없을 경우 */
+.empty {
+    margin-top: 280px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+/* 페이지 버튼 인터페이스 */
+.page_wrap{
+	text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.page_wrap a{
+	color : black;
+}
+
+.page_content{
+    list-style: none;
+    display: inline-block;
+}
+
+.page_btn {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.next, .prev {
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+.next a, .prev a {
+    color: #ccc;
+}
+
+/* 현재 페이지 버튼 */
+.active{
+	border : 2px solid black;
+	font-weight:400;
 }
 
 /* float 속성 해제 */

@@ -20,7 +20,7 @@
         <hr class="boundary">
 
         <div class="navi_bar_area">
-            <div class="admin_navi_warp">
+            <div class="admin_navi_wrap">
                 <ul>
                     <li>
                         <a class="admin_list" href="/admin/addBrand">브랜드 등록</a>
@@ -43,7 +43,85 @@
 
         <div class="content_area">
             <div class="content_subject"><span>물품 관리</span></div>
-        </div>
+                <div class="content_wrap">
+                    <!-- 검색 -->
+                    <div class="search_wrap">
+                        <form id="search_form" action="/admin/changeProduct" method="get">
+                            <input type="hidden" name="pageNum" id="pageNum" value='<c:out value="${pageMaker.criteria.pageNum}"></c:out>'>
+                            <input type="hidden" name="pageAmount" id="pageAmount" value='${pageMaker.criteria.pageAmount}'>
+                            <input type="text" name="keyword" id="keyword" value='<c:out value="${pageMaker.criteria.keyword}"></c:out>'>
+                            <button class="search_btn" onclick="return searchCheck()"> 검색 </button>
+                        </form>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- 게시물 있을 경우 -->
+                    <c:if test="${listEmpty != 'empty'}">
+                        <table class="product_table">
+                            <!-- 제품 테이블 제목 -->
+                            <thread>
+                                <tr>
+                                    <td class="product_num">번호</td>
+                                    <td class="product_name">제품 이름</td>
+                                    <td class="brand_id">브랜드 아이디</td>
+                                    <td class="product_code">제품 코드</td>
+                                </tr>
+                            <thread>
+                            <!-- 제품 테이블 내용 -->
+                            <c:forEach items="${list}" var="list">
+                                <tr>
+                                    <td><c:out value="${list.productID}"/></td>
+                                        <td>
+                                            <a class="move" href='<c:out value="${list.productID}"/>'>
+                                                <c:out value="${list.productName}"/>
+                                            </a>
+                                        </td>
+                                    <td><c:out value="${list.brandID}"/></td>
+                                    <td><c:out value="${list.productCode}"/></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:if>
+
+                    <!-- 게시물 없을 경우 -->
+                    <c:if test="${listEmpty == 'empty'}">
+                        <div class="empty">등록된 브랜드가 없습니다.</div>
+                    </c:if>
+                </div>
+
+                <div class="page_wrap">
+                    <ul class="page_content">
+
+                        <!-- 이전 버튼 -->
+                        <c:if test="${pageMaker.prev}">
+                            <li class="page_btn prev">
+                                <a href="${pageMaker.pageStart - 1}">이전</a>
+                            </li>
+                        </c:if>
+
+                        <!-- 페이지 번호 -->
+                        <c:forEach begin="${pageMaker.pageStart}" end="${pageMaker.pageEnd}" var="num">
+                            <li class="page_btn ${pageMaker.criteria.pageNum == num ? " active":""}">
+                                <a href="${num}">${num}</a>
+                            </li>
+                        </c:forEach>
+
+                        <!-- 다음 버튼 -->
+                        <c:if test="${pageMaker.next}">
+                            <li class="page_btn next">
+                                <a href="${pageMaker.pageEnd + 1}">다음</a>
+                            </li>
+                        </c:if>
+                    </ul>
+                </div>
+
+                <form id="page_form" action="/admin/changeProduct" method="get">
+                    <input type="hidden" name="pageNum" value="${pageMaker.criteria.pageNum}">
+                    <input type="hidden" name="pageAmount" value="${pageMaker.criteria.pageAmount}">
+                    <input type="hidden" name="keyword" value="${pageMaker.criteria.keyword}">
+                </form>
+            </div>
         <div class="clearfix"></div>
     </div>
 </div>

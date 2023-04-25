@@ -45,15 +45,13 @@
 }
 
 .login_button{
-	height: 50%;
-    background-color: #C46162;
+    height: 50%;
+    background-color: #000000;
     margin-top: 15px;
     margin-right: 10px;
     line-height: 30px;
-    color: black;
-    font-size: 15px;
-    font-weight: 800;
-    border-radius: 10px;
+    color: white;
+    font-size: 13px;
     cursor: pointer;
 }
 /* 로그인 영역 */
@@ -111,13 +109,14 @@
 }
 
 .menu_button {
-    margin: 20px 0px 10px 5px;
-    padding: 0 10px;
-    background-color: #C46162;
+margin: 15px 5px;
+    padding: 3px 10px;
+    background-color: #000000;
     font-size: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
+    color: white;
 }
 
 /* float 속성 해제 */

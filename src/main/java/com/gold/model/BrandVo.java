@@ -11,9 +11,10 @@ public class BrandVo {
 
     private String countryCode;
 
-    private int establishYear;
+    private String establishYear;
 
     private String brandDesc;
+
 
     public void setCountryCode(String countryCode){
         this.countryCode = countryCode;

@@ -96,6 +96,26 @@
     display: inline-block;
 }
 
+.content_small_section {
+    font-size: 20px;
+    width: 0px;
+    height: 30px;
+    display: inline-block;
+}
+
+.ui-datepicker-trigger {
+    margin-left: 25px;
+    width: 100px;
+    height: 35px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+input[name='establishYear'] {
+    width: 230px;
+    text-align: center;
+}
+
 .content_big_section {
     height: 120px;
     margin: 50px;

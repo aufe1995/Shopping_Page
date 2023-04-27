@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <link rel="stylesheet" href="/css/admin/addProduct.css">
-
+<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 </head>
 <body>
@@ -56,6 +56,10 @@
                     <div class="content_title">제품코드</div>
                     <input class="content_box" type="text" name="productCode" id="productCode">
                 </div>
+                <div class="content_big_section">
+                    <div class="content_title">제품설명</div>
+                    <textarea type="text" name="productDesc" id="productDesc"></textarea>
+                </div>
                 <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return productAddCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="location.href='/admin'">취소</button>
@@ -79,6 +83,12 @@
         }
 
     }
+
+    ClassicEditor
+        .create(document.querySelector('#productDesc'))
+        .catch(error=>{
+    	    console.error(error);
+        });
 
 </script>
 </body>

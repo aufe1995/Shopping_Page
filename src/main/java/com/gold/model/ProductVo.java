@@ -13,4 +13,6 @@ public class ProductVo {
 
     private String productCode;
 
+    private String productDesc;
+
 }

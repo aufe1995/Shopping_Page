@@ -96,6 +96,21 @@
     display: inline-block;
 }
 
+.content_big_section {
+    height: 220px;
+    margin: 50px;
+}
+
+#productDesc {
+    height: 150px;
+    margin: 10px 100px;
+}
+
+.ck ck-reset ck-editor ck-rounded-corners {
+    height: 150px;
+    margin: 10px 100px;
+}
+
 option {
     text-align: center;
 }

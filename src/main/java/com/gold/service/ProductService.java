@@ -18,6 +18,7 @@ public class ProductService {
         productVo.setProductName(productVo.getProductName());
         productVo.setBrandID(productVo.getBrandID());
         productVo.setProductCode(productVo.getProductCode());
+        productVo.setProductDesc(productVo.getProductDesc());
         productMapper.addProduct(productVo);
     }
 

@@ -5,8 +5,8 @@
 <mapper namespace="com.gold.mappers.ProductMapper">
     <!-- 물품 추가 -->
     <insert id="addProduct" parameterType="com.gold.model.ProductVo">
-        INSERT INTO PRODUCT (PRODUCT_NAME, BRAND_ID, PRODUCT_CODE, PRODUCT_DESC)
-        VALUES(#{productName},#{brandID},#{productCode},#{productDesc});
+        INSERT INTO PRODUCT (PRODUCT_NAME, BRAND_ID, PRODUCT_CATE, PRODUCT_CODE, PRODUCT_DESC)
+        VALUES(#{productName},#{brandID},#{productCate},#{productCode},#{productDesc});
     </insert>
     <!-- 물품 목록 -->
     <select id="productGetList" resultType="com.gold.model.ProductVo">

@@ -11,6 +11,8 @@ public class ProductVo {
 
     private int brandID;
 
+    private String productCate;
+
     private String productCode;
 
     private String productDesc;

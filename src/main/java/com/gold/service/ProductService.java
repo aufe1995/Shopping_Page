@@ -17,6 +17,7 @@ public class ProductService {
     public void addProduct(ProductVo productVo){
         productVo.setProductName(productVo.getProductName());
         productVo.setBrandID(productVo.getBrandID());
+        productVo.setProductCate(productVo.getProductCate());
         productVo.setProductCode(productVo.getProductCode());
         productVo.setProductDesc(productVo.getProductDesc());
         productMapper.addProduct(productVo);

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <link rel="stylesheet" href="/css/admin/addProduct.css">
+<script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 </head>
@@ -49,8 +50,14 @@
                     <input class="content_box" type="text" name="productName" id="productName">
                 </div>
                 <div class="content_section">
-                    <div class="content_title">브랜드 아이디</div>
-                    <input class="content_box" type="int" name="brandID" id="brandID">
+                    <div class="content_title">브랜드</div>
+                    <input class="content_small_section" name="brandName" id="brandName"  readonly="readonly">
+                    <input name="brandID" id="brandID" type="hidden">
+                    <button class="brand_btn" onclick="popUp()">브랜드 선택</button>
+                </div>
+                <div class="content_section">
+                    <div class="content_title">카테고리</div>
+                    <input class="content_box" type="text" name="productCate" id="productCate">
                 </div>
                 <div class="content_section">
                     <div class="content_title">제품코드</div>
@@ -73,14 +80,25 @@
 <script type="text/javascript">
 
     function productAddCheck(){
-        if(!content_warp.productName.value.length && !content_warp.productCode.value.length){
+        if(!content_warp.productName.value.length && !content_warp.productCode.value.length && !content_warp.productCate.value.length){
             alert("모든 항목을 입력해주세요.");
             return false;
         }
-        if(content_warp.brandID.value.none){
+        if(content_warp.brandID.value.length == '0'){
             alert("모든 항목을 입력해주세요.");
             return false;
         }
+
+    }
+
+    function popUp() {
+
+        event.preventDefault();
+
+        let popUrl = "/admin/brandPop";
+        let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
+
+        window.open(popUrl,"브랜드 선택",popOption);
 
     }
 

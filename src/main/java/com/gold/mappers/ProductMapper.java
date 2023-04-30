@@ -1,5 +1,6 @@
 package com.gold.mappers;
 
+import com.gold.model.CateVo;
 import com.gold.model.Criteria;
 import com.gold.model.ProductVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,6 @@ public interface ProductMapper {
     List<ProductVo> productGetList(Criteria criteria);
 
     int productGetTotal(Criteria criteria);
+
+    List<CateVo> cataList();
 }

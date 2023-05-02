@@ -1,6 +1,7 @@
 package com.gold.service;
 
 import com.gold.mappers.ProductMapper;
+import com.gold.model.CateVo;
 import com.gold.model.Criteria;
 import com.gold.model.ProductVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,9 @@ public class ProductService {
 
     public int productGetTotal(Criteria criteria) throws Exception{
         return productMapper.productGetTotal(criteria);
+    }
+
+    public List<CateVo> cataList() {
+        return productMapper.cataList();
     }
 }

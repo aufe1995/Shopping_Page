@@ -1,5 +1,6 @@
 package com.gold.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gold.model.Criteria;
 import com.gold.model.PageMaker;
 import com.gold.service.BrandService;
@@ -154,6 +155,18 @@ public class AdminController {
         model.addAttribute("pageMaker", new PageMaker(criteria, productService.productGetTotal(criteria)));
 
         return "admin/changeProduct";
+    }
+
+    @GetMapping("/admin/catePop")
+    public void catePop(Model model) throws Exception{
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        List list = productService.cataList();
+
+        String cateList = objectMapper.writeValueAsString(list);
+
+        model.addAttribute("cateList",cateList);
     }
 
     //회원 관리 페이지

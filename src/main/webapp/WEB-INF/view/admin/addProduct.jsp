@@ -57,7 +57,26 @@
                 </div>
                 <div class="content_section">
                     <div class="content_title">카테고리</div>
-                    <input class="content_box" type="text" name="productCate" id="productCate">
+                    <div class="content_select">
+                        <div class="cate_warp">
+                            <span>대분류</span>
+                            <select class="cate1">
+                                <option selected value="none">선택</option>
+                            </select>
+                        </div>
+                        <div class="cate_warp">
+                            <span>중분류</span>
+                            <select class="cate2">
+                                <option selected value="none">선택</option>
+                            </select>
+                        </div>
+                        <div class="cate_warp">
+                            <span>소분류</span>
+                            <select class="cate3" name="cateCode">
+                                <option selected value="none">선택</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="content_section">
                     <div class="content_title">제품코드</div>
@@ -108,6 +127,43 @@
     	    console.error(error);
         });
 
+    let cateList = JSON.parse('${cateList}');
+
+	let cate1Array = new Array();
+	let cate2Array = new Array();
+	let cate3Array = new Array();
+	let cate1Obj = new Object();
+	let cate2Obj = new Object();
+	let cate3Obj = new Object();
+
+	let cateSelect1 = $(".cate1");
+	let cateSelect2 = $(".cate2");
+	let cateSelect3 = $(".cate3");
+
+	function cateArray(obj, array, cateList, section){
+		for(let i = 0; i < cateList.length; i++){
+    		if(cateList[i].section === section){
+    			obj = new Object();
+
+    			obj.cateName = cateList[i].cateName;
+    			obj.cateCode = cateList[i].cateCode;
+    			obj.cateParent = cateList[i].cateParent;
+
+    			array.push(obj);
+    		}
+    	}
+	}
+
+	/* 배열 초기화 */
+	cateArray(cate1Obj,cate1Array,cateList,1);
+	cateArray(cate2Obj,cate2Array,cateList,2);
+	cateArray(cate3Obj,cate3Array,cateList,3);
+
+	$(document).ready(function(){
+		console.log(cate1Array);
+		console.log(cate2Array);
+		console.log(cate3Array);
+	});
 </script>
 </body>
 </html>

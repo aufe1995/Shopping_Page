@@ -101,9 +101,17 @@ public class AdminController {
 
     //물품 등록 페이지
     @GetMapping("/admin/addProduct")
-    public String AddProductPage() {
+    public String AddProductPage(Model model) throws Exception{
 
         logger.info(">>>>>>>>>>>>>>>>>>> 관리자 물품 등록 페이지 진입");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        List list = productService.cateList();
+
+        String cateList = objectMapper.writeValueAsString(list);
+
+        model.addAttribute("cateList",cateList);
 
         return "admin/addProduct";
     }
@@ -160,13 +168,7 @@ public class AdminController {
     @GetMapping("/admin/catePop")
     public void catePop(Model model) throws Exception{
 
-        ObjectMapper objectMapper = new ObjectMapper();
 
-        List list = productService.cataList();
-
-        String cateList = objectMapper.writeValueAsString(list);
-
-        model.addAttribute("cateList",cateList);
     }
 
     //회원 관리 페이지

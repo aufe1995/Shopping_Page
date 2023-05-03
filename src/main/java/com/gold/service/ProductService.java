@@ -32,7 +32,7 @@ public class ProductService {
         return productMapper.productGetTotal(criteria);
     }
 
-    public List<CateVo> cataList() {
-        return productMapper.cataList();
+    public List<CateVo> cateList() {
+        return productMapper.cateList();
     }
 }

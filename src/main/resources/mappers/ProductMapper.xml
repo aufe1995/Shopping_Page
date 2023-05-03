@@ -27,6 +27,6 @@
     <!-- 카테고리 리스트 -->
     <select id="cateList" resultType="com.gold.model.CateVo">
         SELECT * FROM PRODUCT_CATE
-        ORDER BY CATECODE;
+        ORDER BY CATE_CODE;
     </select>
 </mapper>

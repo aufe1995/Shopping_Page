@@ -16,5 +16,5 @@ public interface ProductMapper {
 
     int productGetTotal(Criteria criteria);
 
-    List<CateVo> cataList();
+    List<CateVo> cateList();
 }

@@ -55,24 +55,24 @@
                     <input name="brandID" id="brandID" type="hidden">
                     <button class="brand_btn" onclick="popUp()">브랜드 선택</button>
                 </div>
-                <div class="content_section">
+                <div class="content_option_section">
                     <div class="content_title">카테고리</div>
                     <div class="content_select">
-                        <div class="cate_warp">
+                        <div class="cate_wrap">
                             <span>대분류</span>
                             <select class="cate1">
                                 <option selected value="none">선택</option>
                             </select>
                         </div>
-                        <div class="cate_warp">
+                        <div class="cate_wrap">
                             <span>중분류</span>
                             <select class="cate2">
                                 <option selected value="none">선택</option>
                             </select>
                         </div>
-                        <div class="cate_warp">
+                        <div class="cate_wrap">
                             <span>소분류</span>
-                            <select class="cate3" name="cateCode">
+                            <select class="cate3" name="productCate">
                                 <option selected value="none">선택</option>
                             </select>
                         </div>
@@ -159,11 +159,46 @@
 	cateArray(cate2Obj,cate2Array,cateList,2);
 	cateArray(cate3Obj,cate3Array,cateList,3);
 
-	$(document).ready(function(){
-		console.log(cate1Array);
-		console.log(cate2Array);
-		console.log(cate3Array);
+    /* cate1 option 추가 */
+    for(let i = 0; i < cate1Array.length; i++){
+		cateSelect1.append("<option value='"+cate1Array[i].cateCode+"'>" + cate1Array[i].cateName + "</option>");
+	}
+
+    /* cate2 option 추가 */
+	$(cateSelect1).on("change",function(){
+
+		let selectVal1 = $(this).find("option:selected").val();
+
+		cateSelect2.children().remove();
+		cateSelect3.children().remove();
+
+		cateSelect2.append("<option value='none'>선택</option>");
+		cateSelect3.append("<option value='none'>선택</option>");
+
+		for(let i = 0; i < cate2Array.length; i++){
+			if(selectVal1 === cate2Array[i].cateParent){
+				cateSelect2.append("<option value='"+cate2Array[i].cateCode+"'>" + cate2Array[i].cateName + "</option>");
+			}
+		}
+
 	});
+
+	/* cate3 option 추가 */
+    	$(cateSelect2).on("change",function(){
+
+    		let selectVal2 = $(this).find("option:selected").val();
+
+    		cateSelect3.children().remove();
+
+    		cateSelect3.append("<option value='none'>선택</option>");
+
+    		for(let i = 0; i < cate3Array.length; i++){
+    			if(selectVal2 === cate3Array[i].cateParent){
+    				cateSelect3.append("<option value='"+cate3Array[i].cateCode+"'>" + cate3Array[i].cateName + "</option>");
+    			}
+    		}
+
+    	});
 </script>
 </body>
 </html>

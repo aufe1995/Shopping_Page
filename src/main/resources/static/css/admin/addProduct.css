@@ -27,7 +27,7 @@
 
 .admin_navi_wrap{
     width: 20%;
-    height: 850px;
+    height: 900px;
     background-color: #F1EEEE;
     float: left;
 }
@@ -61,7 +61,7 @@
 .content_area {
     width: 80%;
     float: left;
-    height: 850px;
+    height: 900px;
     background-color: white;
 }
 
@@ -114,12 +114,32 @@
 }
 
 .content_big_section {
-    height: 220px;
+    height: 230px;
     margin: 50px;
 }
 
-.content_section select{
+.content_option_section {
+    height: 110px;
+    margin: 50px;
+    display: flex;
+}
 
+.cate_wrap{
+    width: 360px;
+    height: 40px;
+}
+
+.cate_wrap span{
+    font-weight: 600;
+    font-size: 17px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.cate_wrap select{
+    width: 200px;
+    height: 30px;
+    font-weight: 600;
 }
 
 #productDesc {

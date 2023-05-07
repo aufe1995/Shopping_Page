@@ -133,13 +133,19 @@
 }
 
 .brand_id {
-    width: 200px;
+    width: 150px;
+    background-color: black;
+    color: white;
+}
+
+.product_cate {
+    width: 150px;
     background-color: black;
     color: white;
 }
 
 .product_code {
-    width: 250px;
+    width: 150px;
     background-color: black;
     color: white;
 }

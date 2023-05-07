@@ -64,6 +64,7 @@
                                 <tr>
                                     <td class="product_num">번호</td>
                                     <td class="product_name">제품 이름</td>
+                                    <td class="product_cate">제품 카테고리</td>
                                     <td class="brand_id">브랜드 아이디</td>
                                     <td class="product_code">제품 코드</td>
                                 </tr>
@@ -77,6 +78,7 @@
                                                 <c:out value="${list.productName}"/>
                                             </a>
                                         </td>
+                                    <td><c:out value="${list.productCate}"/></td>
                                     <td><c:out value="${list.brandID}"/></td>
                                     <td><c:out value="${list.productCode}"/></td>
                                 </tr>

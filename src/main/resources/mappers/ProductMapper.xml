@@ -29,4 +29,15 @@
         SELECT * FROM PRODUCT_CATE
         ORDER BY CATE_CODE;
     </select>
+    <!-- 제품 상세 화면 -->
+    <select id="productGetDetail" resultType="com.gold.model.ProductVo">
+        SELECT * FROM PRODUCT
+        WHERE PRODUCT_ID = #{productID}
+    </select>
+    <!-- 브랜드 수정 -->
+    <update id="productModify">
+        UPDATE PRODUCT SET
+        PRODUCT_NAME=#{productName}, BRAND_ID=#{brandID}, PRODUCT_CATE=#{productCate}, PRODUCT_CODE=#{productCode}, PRODUCT_DESC=#{productDesc}
+        WHERE PRODUCT_ID = #{productID}
+    </update>
 </mapper>

@@ -165,10 +165,24 @@ public class AdminController {
         return "admin/changeProduct";
     }
 
-    @GetMapping("/admin/catePop")
-    public void catePop(Model model) throws Exception{
 
+    @GetMapping("/admin/productDetail")
+    public void productDetailPage(int productID, Criteria criteria, Model model) throws Exception {
 
+        model.addAttribute("criteria", criteria);
+
+        model.addAttribute("productDetail", productService.productGetDetail(productID));
+
+    }
+
+    @PostMapping("/admin/productModify")
+    public String productModifyAction(ProductVo productVo, RedirectAttributes rttr) throws Exception {
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 물품 정보 수정");
+
+        productService.productModify(productVo);
+
+        return "redirect:/admin/changeProduct";
     }
 
     //회원 관리 페이지

@@ -1,6 +1,7 @@
 package com.gold.service;
 
 import com.gold.mappers.ProductMapper;
+import com.gold.model.BrandVo;
 import com.gold.model.CateVo;
 import com.gold.model.Criteria;
 import com.gold.model.ProductVo;
@@ -35,4 +36,19 @@ public class ProductService {
     public List<CateVo> cateList() {
         return productMapper.cateList();
     }
+
+    public ProductVo productGetDetail(int productID) throws Exception{
+        return productMapper.productGetDetail(productID);
+    }
+
+    public int productModify(ProductVo productVo) throws Exception {
+        productVo.setProductID(productVo.getProductID());
+        productVo.setProductName(productVo.getProductName());
+        productVo.setBrandID(productVo.getBrandID());
+        productVo.setProductCate(productVo.getProductCate());
+        productVo.setProductCode(productVo.getProductCode());
+        productVo.setProductDesc(productVo.getProductDesc());
+        return productMapper.productModify(productVo);
+    }
+
 }

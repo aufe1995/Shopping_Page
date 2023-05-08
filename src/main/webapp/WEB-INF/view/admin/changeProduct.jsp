@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <link rel="stylesheet" href="/css/admin/changeProduct.css">
-
+<%-- ajax 사용을 위한 스크립트 추가 --%>
+<script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 </head>
 <body>
@@ -127,7 +128,45 @@
         <div class="clearfix"></div>
     </div>
 </div>
+<script type="text/javascript">
 
+
+    $(".page_btn a").on("click", function() {
+
+        event.preventDefault();
+
+        $('#page_form').find("input[name='pageNum']").val($(this).attr("href"));
+
+        page_form.submit();
+
+    });
+
+    $(".move").on("click", function() {
+
+        event.preventDefault();
+
+        $('#page_form').append("<input type='hidden' name='productID' value='"+ $(this).attr("href") + "'>");
+
+        $('#page_form').attr("action", "/admin/productDetail");
+
+        page_form.submit();
+
+    });
+
+    function searchCheck() {
+
+        event.preventDefault();
+
+        if(!search_form.keyword.value.length){
+            alert("검색어를 입력해주세요.");
+            return false;
+        }else{
+            $('#pageNum').attr('value','1');
+            search_form.submit();
+        }
+
+    }
+</script>
 </body>
 </html>
 <!-- 하단 메뉴 -->

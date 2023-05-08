@@ -27,7 +27,7 @@
 
 .admin_navi_wrap{
     width: 20%;
-    height: 750px;
+    height: 900px;
     background-color: #F1EEEE;
     float: left;
 }
@@ -61,7 +61,7 @@
 .content_area {
     width: 80%;
     float: left;
-    height: 750px;
+    height: 900px;
     background-color: white;
 }
 
@@ -96,7 +96,7 @@
     display: inline-block;
 }
 
-#brandID{
+#productID{
     text-align: center;
     border: none;
 }

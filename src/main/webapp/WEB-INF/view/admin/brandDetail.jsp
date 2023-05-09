@@ -68,7 +68,7 @@
                 </div>
                 <div class="content_section">
                     <div class="content_title">설립년도</div>
-                    <input class="content_box" type="number" name="establishYear" id="establishYear" min="1000" max="2999" value="<c:out value='${brandDetail.establishYear}'></c:out>">
+                    <input class="content_small_section" type="text" name="establishYear" id="establishYear" autocomplete="off" readonly="readonly">
                 </div>
                 <div class="content_big_section">
                     <div class="content_title">브랜드 설명</div>
@@ -101,12 +101,16 @@
     }
 
     function brandChangeCheck(){
-        if(!content_warp.brandName.value.length && !content_warp.establishYear.value.length && !content_warp.brandDesc.value.length){
+        if(!content_warp.brandName.value.length && !content_warp.brandDesc.value.length){
             alert("모든 항목을 입력해주세요.");
             return false;
         }
         if(content_warp.countryCode.value == '0'){
-            alert("본사를 입력해주세요.");
+            alert("모든 항목을 입력해주세요.");
+            return false;
+        }
+        if(content_warp.establishYear.value.length == '0'){
+            alert("모든 항목을 입력해주세요.");
             return false;
         }
 
@@ -114,6 +118,29 @@
 
         content_warp.submit();
     }
+
+    const config = {
+        dateFormat: 'yy-mm-dd',
+        showOn : "button",
+        buttonText:"날짜 선택",
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        dayNames: ['일','월','화','수','목','금','토'],
+        dayNamesShort: ['일','월','화','수','목','금','토'],
+        dayNamesMin: ['일','월','화','수','목','금','토'],
+        yearSuffix: '년',
+        changeMonth: true,
+        changeYear: true
+    }
+
+    /* 캘린더 위젯 적용 */
+    $(function() {
+        let establishYear = '${brandDetail.establishYear}';
+        $( "input[name='establishYear']" ).datepicker(config);
+        $( "input[name='establishYear']" ).datepicker('setDate', establishYear);
+    });
 
 </script>
 </body>

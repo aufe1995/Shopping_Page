@@ -99,7 +99,7 @@
 <script type="text/javascript">
 
     function productAddCheck(){
-        if(!content_warp.productName.value.length && !content_warp.productCode.value.length && !content_warp.productCate.value.length){
+        if(!content_warp.productName.value.length && !content_warp.productCode.value.length && content_warp.productCate.value == "none"){
             alert("모든 항목을 입력해주세요.");
             return false;
         }

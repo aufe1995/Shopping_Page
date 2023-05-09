@@ -64,10 +64,10 @@
                             <thread>
                                 <tr>
                                     <td class="product_num">번호</td>
-                                    <td class="product_name">제품 이름</td>
-                                    <td class="product_cate">제품 카테고리</td>
-                                    <td class="brand_id">브랜드 아이디</td>
-                                    <td class="product_code">제품 코드</td>
+                                    <td class="product_name">물품 이름</td>
+                                    <td class="product_cate">카테고리</td>
+                                    <td class="brand_id">브랜드</td>
+                                    <td class="product_code">제품코드</td>
                                 </tr>
                             <thread>
                             <!-- 제품 테이블 내용 -->
@@ -89,7 +89,7 @@
 
                     <!-- 게시물 없을 경우 -->
                     <c:if test="${listEmpty == 'empty'}">
-                        <div class="empty">등록된 브랜드가 없습니다.</div>
+                        <div class="empty">등록된 물품이 없습니다.</div>
                     </c:if>
                 </div>
 

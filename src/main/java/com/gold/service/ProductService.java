@@ -1,7 +1,6 @@
 package com.gold.service;
 
 import com.gold.mappers.ProductMapper;
-import com.gold.model.BrandVo;
 import com.gold.model.CateVo;
 import com.gold.model.Criteria;
 import com.gold.model.ProductVo;

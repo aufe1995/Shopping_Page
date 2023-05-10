@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="/css/admin/brandDetail.css">
 <%-- ajax 사용을 위한 스크립트 추가 --%>
 <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 </head>
 <body>
@@ -56,18 +59,18 @@
                 <div class="content_section">
                     <div class="content_title">본사</div>
                     <select class="content_box" name="countryCode" id="countryCode">
-                        <option value="0" selected>------------------ 국가 선택 ------------------</option>
-                        <option value="410">대한민국</option>
-                        <option value="840">미국</option>
-                        <option value="826">영국</option>
-                        <option value="329">일본</option>
-                        <option value="276">독일</option>
-                        <option value="250">프랑스</option>
-                        <option value="380">이탈리아</option>
+                        <option value="0" disabled="disabled">------------------ 국가 선택 ------------------</option>
+                        <option value="410" <c:out value=" ${brandDetail.countryCode eq '410' ?'selected':''}"/>>대한민국</option>
+                        <option value="840" <c:out value=" ${brandDetail.countryCode eq '840' ?'selected':''}"/>>미국</option>
+                        <option value="826" <c:out value=" ${brandDetail.countryCode eq '826' ?'selected':''}"/>>영국</option>
+                        <option value="329" <c:out value=" ${brandDetail.countryCode eq '329' ?'selected':''}"/>>일본</option>
+                        <option value="276" <c:out value=" ${brandDetail.countryCode eq '276' ?'selected':''}"/>>독일</option>
+                        <option value="250" <c:out value=" ${brandDetail.countryCode eq '250' ?'selected':''}"/>>프랑스</option>
+                        <option value="380" <c:out value=" ${brandDetail.countryCode eq '380' ?'selected':''}"/>>이탈리아</option>
                     </select>
                 </div>
                 <div class="content_section">
-                    <div class="content_title">설립년도</div>
+                    <div class="content_title">설립날짜</div>
                     <input class="content_small_section" type="text" name="establishYear" id="establishYear" autocomplete="off" readonly="readonly">
                 </div>
                 <div class="content_big_section">
@@ -119,28 +122,31 @@
         content_warp.submit();
     }
 
-    const config = {
-        dateFormat: 'yy-mm-dd',
-        showOn : "button",
-        buttonText:"날짜 선택",
-        prevText: '이전 달',
-        nextText: '다음 달',
-        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-        dayNames: ['일','월','화','수','목','금','토'],
-        dayNamesShort: ['일','월','화','수','목','금','토'],
-        dayNamesMin: ['일','월','화','수','목','금','토'],
-        yearSuffix: '년',
-        changeMonth: true,
-        changeYear: true
-    }
+    $(document).ready(function(){
+        const config = {
+            dateFormat: 'yy-mm-dd',
+            showOn : "button",
+            buttonText:"날짜 선택",
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNames: ['일','월','화','수','목','금','토'],
+            dayNamesShort: ['일','월','화','수','목','금','토'],
+            dayNamesMin: ['일','월','화','수','목','금','토'],
+            yearSuffix: '년',
+            changeMonth: true,
+            changeYear: true
+        }
 
-    /* 캘린더 위젯 적용 */
-    $(function() {
-        let establishYear = '${brandDetail.establishYear}';
-        $( "input[name='establishYear']" ).datepicker(config);
-        $( "input[name='establishYear']" ).datepicker('setDate', establishYear);
+        /* 캘린더 위젯 적용 */
+        $(function() {
+            let establishYear = '${brandDetail.establishYear}';
+            $( "input[name='establishYear']" ).datepicker(config);
+            $( "input[name='establishYear']" ).datepicker('setDate', establishYear);
+        });
     });
+
 
 </script>
 </body>

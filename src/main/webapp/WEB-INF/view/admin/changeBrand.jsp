@@ -82,7 +82,34 @@
                                     <c:out value="${list.brandName}"/>
                                 </a>
                             </td>
-                            <td><c:out value="${list.countryCode}"/></td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${list.countryCode == '410'}">
+                                        <c:out value="대한민국"/>
+                                    </c:when>
+                                    <c:when test="${list.countryCode == '840'}">
+                                        <c:out value="미국"/>
+                                    </c:when>
+                                    <c:when test="${list.countryCode == '826'}">
+                                        <c:out value="영국"/>
+                                    </c:when>
+                                    <c:when test="${list.countryCode == '329'}">
+                                        <c:out value="일본"/>
+                                    </c:when>
+                                    <c:when test="${list.countryCode == '276'}">
+                                        <c:out value="독일"/>
+                                    </c:when>
+                                    <c:when test="${list.countryCode == '250'}">
+                                        <c:out value="프랑스"/>
+                                    </c:when>
+                                    <c:when test="${list.countryCode == '380'}">
+                                        <c:out value="이탈리아"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="${list.countryCode}"/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                             <td><c:out value="${list.establishYear}"/></td>
                             <td>
                                 <c:choose>

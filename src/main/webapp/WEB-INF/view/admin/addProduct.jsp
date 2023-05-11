@@ -82,6 +82,10 @@
                     <div class="content_title">제품코드</div>
                     <input class="content_box" type="text" name="productCode" id="productCode">
                 </div>
+                <div class="content_section">
+                    <div class="content_title">제품가격</div>
+                    <input class="content_box" type="text" name="productPrice" id="productPrice">
+                </div>
                 <div class="content_big_section">
                     <div class="content_title">제품설명</div>
                     <textarea type="text" name="productDesc" id="productDesc"></textarea>

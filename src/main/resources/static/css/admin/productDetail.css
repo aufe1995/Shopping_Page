@@ -27,7 +27,7 @@
 
 .admin_navi_wrap{
     width: 20%;
-    height: 1000px;
+    height: 1150px;
     background-color: #F1EEEE;
     float: left;
 }
@@ -61,7 +61,7 @@
 .content_area {
     width: 80%;
     float: left;
-    height: 1000px;
+    height: 1150px;
     background-color: white;
 }
 

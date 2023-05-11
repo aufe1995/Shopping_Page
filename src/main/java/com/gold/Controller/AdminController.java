@@ -173,6 +173,13 @@ public class AdminController {
 
         model.addAttribute("productDetail", productService.productGetDetail(productID));
 
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        List list = productService.cateList();
+
+        String cateList = objectMapper.writeValueAsString(list);
+
+        model.addAttribute("cateList",cateList);
     }
 
     @PostMapping("/admin/productModify")

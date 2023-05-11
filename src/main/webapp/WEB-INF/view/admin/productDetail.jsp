@@ -9,6 +9,9 @@
 <%-- ajax 사용을 위한 스크립트 추가 --%>
 <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <%@ include file="/WEB-INF/view/include/header.jsp" %>
 </head>
 <body>
@@ -87,6 +90,10 @@
                     <div class="content_title">제품코드</div>
                     <input class="content_box" type="text" name="productCode" id="productCode" value="<c:out value='${productDetail.productCode}'></c:out>">
                 </div>
+                <div class="content_section">
+                    <div class="content_title">제품가격</div>
+                    <input class="content_box" type="text" name="productPrice" id="productPrice">
+                </div>
                 <div class="content_big_section">
                     <div class="content_title">제품설명</div>
                     <textarea type="text" name="productDesc" id="productDesc"></textarea>
@@ -97,7 +104,7 @@
                 </div>
             </form>
             <form id="moveForm" method="get">
-                <input type="hidden" name="brandID" value="${brandDetail.brandID}">
+                <input type="hidden" name="productID" value="${productDetail.productID}">
             	<input type="hidden" name="pageNum" value="${criteria.pageNum}">
             	<input type="hidden" name="pageAmount" value="${criteria.pageAmount}">
             	<input type="hidden" name="keyword" value="${criteria.keyword}">
@@ -111,7 +118,7 @@
     function cancelPage() {
         event.preventDefault();
 
-        $("#page_brandID").remove();
+        $("#page_productID").remove();
         $('#moveForm').attr("action", "/admin/changeProduct");
         moveForm.submit();
 
@@ -143,13 +150,105 @@
 
     }
 
-    ClassicEditor
-        .create(document.querySelector('#productDesc'))
-        .catch(error=>{
-    	    console.error(error);
-        });
+    $(document).ready(function(){
+        let cateList = JSON.parse('${cateList}');
 
-    let cateList = JSON.parse('${cateList}');
+    	let cate1Array = new Array();
+    	let cate2Array = new Array();
+    	let cate3Array = new Array();
+    	let cate1Obj = new Object();
+    	let cate2Obj = new Object();
+    	let cate3Obj = new Object();
+
+    	let cateSelect1 = $(".cate1");
+    	let cateSelect2 = $(".cate2");
+    	let cateSelect3 = $(".cate3");
+
+    	function cateArray(obj, array, cateList, section){
+    		for(let i = 0; i < cateList.length; i++){
+        		if(cateList[i].section === section){
+        			obj = new Object();
+
+        			obj.cateName = cateList[i].cateName;
+        			obj.cateCode = cateList[i].cateCode;
+        			obj.cateParent = cateList[i].cateParent;
+
+        			array.push(obj);
+        		}
+        	}
+    	}
+
+    	/* 배열 초기화 */
+    	cateArray(cate1Obj,cate1Array,cateList,1);
+    	cateArray(cate2Obj,cate2Array,cateList,2);
+    	cateArray(cate3Obj,cate3Array,cateList,3);
+
+    	let targetCate2 = '';
+        let targetCate3 = '${productDetail.productCate}';
+
+    	/* 소분류 */
+    	for(let i = 0; i < cate3Array.length; i++){
+    	    if(targetCate3 === cate3Array[i].cateCode){
+    		    targetCate3 = cate3Array[i];
+    	    }
+    	}
+
+    	for(let i = 0; i < cate3Array.length; i++){
+    	    if(targetCate3.cateParent === cate3Array[i].cateParent){
+    		    cateSelect3.append("<option value='"+cate3Array[i].cateCode+"'>" + cate3Array[i].cateName + "</option>");
+    		}
+    	}
+
+    	$(".cate3 option").each(function(i,obj){
+            if(targetCate3.cateCode === obj.value){
+                $(obj).attr("selected", "selected");
+            }
+    	});
+
+    	/* 중분류 */
+    	for(let i = 0; i < cate2Array.length; i++){
+    		if(targetCate3.cateParent === cate2Array[i].cateCode){
+    			targetCate2 = cate2Array[i];
+    		}
+    	}
+
+    	for(let i = 0; i < cate2Array.length; i++){
+    		if(targetCate2.cateParent === cate2Array[i].cateParent){
+    			cateSelect2.append("<option value='"+cate2Array[i].cateCode+"'>" + cate2Array[i].cateName + "</option>");
+    		}
+    	}
+
+    	$(".cate2 option").each(function(i,obj){
+    		if(targetCate2.cateCode === obj.value){
+    			$(obj).attr("selected", "selected");
+    		}
+    	});
+
+
+    	/* 대분류 */
+    	for(let i = 0; i < cate1Array.length; i++){
+    		cateSelect1.append("<option value='"+cate1Array[i].cateCode+"'>" + cate1Array[i].cateName + "</option>");
+    	}
+
+    	$(".cate1 option").each(function(i,obj){
+    		if(targetCate2.cateParent === obj.value){
+    			$(obj).attr("selected", "selected");
+    		}
+    	});
+
+        ClassicEditor
+            .create(document.querySelector('#productDesc'))
+            .catch(error=>{
+        	    console.error(error);
+            });
+
+    });
+
+</script>
+
+<script>
+	/* 카테고리 */
+	let cateList = JSON.parse('${cateList}');
 
 	let cate1Array = new Array();
 	let cate2Array = new Array();
@@ -181,94 +280,10 @@
 	cateArray(cate2Obj,cate2Array,cateList,2);
 	cateArray(cate3Obj,cate3Array,cateList,3);
 
-	let targetCate2 = '';
-    let targetCate3 = '${productDetail.productCate}';
-
-	/* 소분류 */
-	for(let i = 0; i < cate3Array.length; i++){
-	    if(targetCate3 === cate3Array[i].cateCode){
-		    targetCate3 = cate3Array[i];
-	    }
-	}
-
-	for(let i = 0; i < cate3Array.length; i++){
-	    if(targetCate3.cateParent === cate3Array[i].cateParent){
-		    cateSelect3.append("<option value='"+cate3Array[i].cateCode+"'>" + cate3Array[i].cateName + "</option>");
-		}
-	}
-
-	$(".cate3 option").each(function(i,obj){
-        if(targetCate3.cateCode === obj.value){
-            $(obj).attr("selected", "selected");
-        }
-	});
-
-	/* 중분류 */
-	for(let i = 0; i < cate2Array.length; i++){
-		if(targetCate3.cateParent === cate2Array[i].cateCode){
-			targetCate2 = cate2Array[i];
-		}
-	}
-
-	for(let i = 0; i < cate2Array.length; i++){
-		if(targetCate2.cateParent === cate2Array[i].cateParent){
-			cateSelect2.append("<option value='"+cate2Array[i].cateCode+"'>" + cate2Array[i].cateName + "</option>");
-		}
-	}
-
-	$(".cate2 option").each(function(i,obj){
-		if(targetCate2.cateCode === obj.value){
-			$(obj).attr("selected", "selected");
-		}
-	});
-
-
-	/* 대분류 */
-	for(let i = 0; i < cate1Array.length; i++){
+    /* cate1 option 추가 */
+    for(let i = 0; i < cate1Array.length; i++){
 		cateSelect1.append("<option value='"+cate1Array[i].cateCode+"'>" + cate1Array[i].cateName + "</option>");
 	}
-
-	$(".cate1 option").each(function(i,obj){
-		if(targetCate2.cateParent === obj.value){
-			$(obj).attr("selected", "selected");
-		}
-	});
-</script>
-<script>
-	/* 카테고리 */
-	let cateList = JSON.parse('${cateList}');
-
-	let cate1Array = new Array();
-	let cate2Array = new Array();
-	let cate3Array = new Array();
-	let cate1Obj = new Object();
-	let cate2Obj = new Object();
-	let cate3Obj = new Object();
-
-	let cateSelect1 = $(".cate1");
-	let cateSelect2 = $(".cate2");
-	let cateSelect3 = $(".cate3");
-
-	/* 카테고리 배열 초기화 메서드 */
-	function makeCateArray(obj,array,cateList, tier){
-		for(let i = 0; i < cateList.length; i++){
-			if(cateList[i].tier === tier){
-				obj = new Object();
-
-				obj.cateName = cateList[i].cateName;
-				obj.cateCode = cateList[i].cateCode;
-				obj.cateParent = cateList[i].cateParent;
-
-				array.push(obj);
-
-			}
-		}
-	}
-
-    /* 배열 초기화 */
-	makeCateArray(cate1Obj,cate1Array,cateList,1);
-	makeCateArray(cate2Obj,cate2Array,cateList,2);
-	makeCateArray(cate3Obj,cate3Array,cateList,3);
 
     /* cate2 option 추가 */
 	$(cateSelect1).on("change",function(){
@@ -305,7 +320,6 @@
     		}
 
     	});
-
 </script>
 </body>
 </html>

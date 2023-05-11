@@ -15,6 +15,8 @@ public class ProductVo {
 
     private String productCode;
 
+    private int productPrice;
+
     private String productDesc;
 
 }

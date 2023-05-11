@@ -46,6 +46,7 @@ public class ProductService {
         productVo.setBrandID(productVo.getBrandID());
         productVo.setProductCate(productVo.getProductCate());
         productVo.setProductCode(productVo.getProductCode());
+        productVo.setProductPrice(productVo.getProductPrice());
         productVo.setProductDesc(productVo.getProductDesc());
         return productMapper.productModify(productVo);
     }

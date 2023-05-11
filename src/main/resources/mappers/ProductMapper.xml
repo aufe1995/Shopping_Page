@@ -5,8 +5,8 @@
 <mapper namespace="com.gold.mappers.ProductMapper">
     <!-- 물품 추가 -->
     <insert id="addProduct" parameterType="com.gold.model.ProductVo">
-        INSERT INTO PRODUCT (PRODUCT_NAME, BRAND_ID, PRODUCT_CATE, PRODUCT_CODE, PRODUCT_DESC)
-        VALUES(#{productName},#{brandID},#{productCate},#{productCode},#{productDesc});
+        INSERT INTO PRODUCT (PRODUCT_NAME, BRAND_ID, PRODUCT_CATE, PRODUCT_CODE, PRODUCT_PRICE, PRODUCT_DESC)
+        VALUES(#{productName},#{brandID},#{productCate},#{productCode},#{productPrice},#{productDesc});
     </insert>
     <!-- 물품 목록 -->
     <select id="productGetList" resultType="com.gold.model.ProductVo">
@@ -37,7 +37,7 @@
     <!-- 브랜드 수정 -->
     <update id="productModify">
         UPDATE PRODUCT SET
-        PRODUCT_NAME=#{productName}, BRAND_ID=#{brandID}, PRODUCT_CATE=#{productCate}, PRODUCT_CODE=#{productCode}, PRODUCT_DESC=#{productDesc}
+        PRODUCT_NAME=#{productName}, BRAND_ID=#{brandID}, PRODUCT_CATE=#{productCate}, PRODUCT_CODE=#{productCode}, PRODUCT_PRICE=#{productPrice}, PRODUCT_DESC=#{productDesc}
         WHERE PRODUCT_ID = #{productID}
     </update>
 </mapper>

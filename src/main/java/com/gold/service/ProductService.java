@@ -51,4 +51,8 @@ public class ProductService {
         return productMapper.productModify(productVo);
     }
 
+    public int productDelete(int productID) throws Exception {
+        return productMapper.productDelete(productID);
+    }
+
 }

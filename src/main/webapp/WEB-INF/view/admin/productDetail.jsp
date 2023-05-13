@@ -101,6 +101,7 @@
                 <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return productChangeCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="cancelPage()">취소</button>
+                    <button class="submit_button" type="button" class="btn btn-primary" onclick="deleteProduct()">삭제</button>
                 </div>
             </form>
             <form id="moveForm" method="get">
@@ -115,6 +116,7 @@
 </div>
 <script type="text/javascript">
 
+    /* 취소 버튼 */
     function cancelPage() {
         event.preventDefault();
 
@@ -123,6 +125,17 @@
         moveForm.submit();
 
     }
+
+    /* 삭제 버튼 */
+    function deleteProduct(){
+        event.preventDefault();
+        $('#moveForm').find("input").remove();
+    	$('#moveForm').append('<input type="hidden" name="productID" value="${productDetail.productID}">');
+    	$('#moveForm').attr("action", "/admin/productDelete");
+    	$('#moveForm').attr("method", "post");
+    	moveForm.submit();
+    }
+
 
     function productChangeCheck(){
         if(!content_warp.productName.value.length && !content_warp.productCode.value.length && content_warp.productCate.value == "none"){

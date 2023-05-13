@@ -29,15 +29,21 @@
         SELECT * FROM PRODUCT_CATE
         ORDER BY CATE_CODE;
     </select>
-    <!-- 제품 상세 화면 -->
+    <!-- 물품 상세 화면 -->
     <select id="productGetDetail" resultType="com.gold.model.ProductVo">
         SELECT * FROM PRODUCT
         WHERE PRODUCT_ID = #{productID}
     </select>
-    <!-- 브랜드 수정 -->
+    <!-- 물품 수정 -->
     <update id="productModify">
         UPDATE PRODUCT SET
         PRODUCT_NAME=#{productName}, BRAND_ID=#{brandID}, PRODUCT_CATE=#{productCate}, PRODUCT_CODE=#{productCode}, PRODUCT_PRICE=#{productPrice}, PRODUCT_DESC=#{productDesc}
         WHERE PRODUCT_ID = #{productID}
     </update>
+    <!-- 물품 삭제 -->
+    <delete id="productDelete">
+        DELETE FROM PRODUCT
+        WHERE PRODUCT_ID = #{productID}
+    </delete>
+
 </mapper>

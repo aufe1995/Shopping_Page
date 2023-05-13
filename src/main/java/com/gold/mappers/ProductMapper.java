@@ -21,4 +21,6 @@ public interface ProductMapper {
     ProductVo productGetDetail(int productID);
 
     int productModify(ProductVo productVo);
+
+    int productDelete(int productID);
 }

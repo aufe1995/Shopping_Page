@@ -98,6 +98,18 @@ public class AdminController {
         return "redirect:/admin/changeBrand";
     }
 
+    @PostMapping("/admin/brandDelete")
+    public String brandDeleteAction(int brandID, RedirectAttributes rttr) throws Exception {
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 물품 정보 삭제");
+
+        int result = brandService.brandDelete(brandID);
+
+        rttr.addFlashAttribute("delete_result", result);
+
+        return "redirect:/admin/changeBrand";
+    }
+
 
     //물품 등록 페이지
     @GetMapping("/admin/addProduct")
@@ -183,11 +195,23 @@ public class AdminController {
     }
 
     @PostMapping("/admin/productModify")
-    public String productModifyAction(ProductVo productVo, RedirectAttributes rttr) throws Exception {
+    public String productModifyAction(ProductVo productVo) throws Exception {
 
         logger.info(">>>>>>>>>>>>>>>>>>> 물품 정보 수정");
 
         productService.productModify(productVo);
+
+        return "redirect:/admin/changeProduct";
+    }
+
+    @PostMapping("/admin/productDelete")
+    public String productDeleteAction(int productID, RedirectAttributes rttr) throws Exception {
+
+        logger.info(">>>>>>>>>>>>>>>>>>> 물품 정보 삭제");
+
+        int result = productService.productDelete(productID);
+
+        rttr.addFlashAttribute("delete_result", result);
 
         return "redirect:/admin/changeProduct";
     }

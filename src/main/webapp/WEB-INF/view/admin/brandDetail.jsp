@@ -80,6 +80,7 @@
                 <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return brandChangeCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="cancelPage()">취소</button>
+                    <button class="submit_button" type="button" class="btn btn-primary" onclick="deleteProduct()">삭제</button>
                 </div>
             </form>
             <form id="moveForm" method="get">
@@ -94,14 +95,25 @@
 </div>
 <script type="text/javascript">
 
+    /* 취소 버튼 */
     function cancelPage() {
         event.preventDefault();
 
         $("#page_brandID").remove();
         $('#moveForm').attr("action", "/admin/changeBrand");
         moveForm.submit();
-
     }
+
+    /* 삭제 버튼 */
+    function deleteProduct(){
+        event.preventDefault();
+        $('#moveForm').find("input").remove();
+    	$('#moveForm').append('<input type="hidden" name="brandID" value="${brandDetail.brandID}">');
+    	$('#moveForm').attr("action", "/admin/brandDelete");
+    	$('#moveForm').attr("method", "post");
+    	moveForm.submit();
+    }
+
 
     function brandChangeCheck(){
         if(!content_warp.brandName.value.length && !content_warp.brandDesc.value.length){

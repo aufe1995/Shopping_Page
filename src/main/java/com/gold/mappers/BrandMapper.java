@@ -17,4 +17,6 @@ public interface BrandMapper {
     BrandVo brandGetDetail(int brandID);
 
     int brandModify(BrandVo brandVo);
+
+    int brandDelete(int brandID);
 }

@@ -35,4 +35,9 @@
         BRAND_NAME=#{brandName}, COUNTRY_CODE=#{countryCode}, ESTABLISH_YEAR=#{establishYear}, BRAND_DESC=#{brandDesc}
         WHERE BRAND_ID = #{brandID}
     </update>
+    <!-- 브랜드 삭제 -->
+    <delete id="brandDelete">
+        DELETE FROM BRAND
+        WHERE BRAND_ID = #{brandID}
+    </delete>
 </mapper>

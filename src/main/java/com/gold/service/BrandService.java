@@ -3,8 +3,6 @@ package com.gold.service;
 import com.gold.mappers.BrandMapper;
 import com.gold.model.BrandVo;
 import com.gold.model.Criteria;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +41,9 @@ public class BrandService {
         brandVo.setEstablishYear(brandVo.getEstablishYear());
         brandVo.setBrandDesc(brandVo.getBrandDesc());
         return brandMapper.brandModify(brandVo);
+    }
+
+    public int brandDelete(int brandID) throws Exception {
+        return brandMapper.brandDelete(brandID);
     }
 }

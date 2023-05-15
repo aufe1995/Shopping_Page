@@ -98,6 +98,12 @@
                     <div class="content_title">제품설명</div>
                     <textarea type="text" name="productDesc" id="productDesc"></textarea>
                 </div>
+                <div class="content_section">
+                    <div class="content_title">제품 이미지</div>
+                    <div class="content_form">
+                        <input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
+                    </div>
+                </div>
                 <div class="submit_section">
                     <button class="submit_button" type="submit" class="btn btn-primary" value="false" onclick="return productChangeCheck()" >확인</button>
                     <button class="submit_button" type="button" class="btn btn-primary" onclick="cancelPage()">취소</button>
@@ -162,6 +168,39 @@
         window.open(popUrl,"브랜드 선택",popOption);
 
     }
+
+	/* 이미지 업로드 */
+	$("input[type='file']").on("change", function(e){
+		let fileInput = $('input[name="uploadFile"]');
+		let fileList = fileInput[0].files;
+        let fileObj = fileList[0];
+
+        if(!fileCheck(fileObj.name, fileObj.size)){
+			return false;
+		}
+
+		alert("통과");
+	});
+
+	/* var, method related with attachFile */
+	let regex = new RegExp("(.*?)\.(jpg|png)$");
+	let maxSize = 1048576; //1MB
+
+	function fileCheck(fileName, fileSize){
+
+		if(fileSize >= maxSize){
+			alert("파일 사이즈 초과");
+			return false;
+		}
+
+		if(!regex.test(fileName)){
+			alert("해당 종류의 파일은 업로드할 수 없습니다.");
+			return false;
+		}
+
+		return true;
+
+	}
 
     $(document).ready(function(){
         let cateList = JSON.parse('${cateList}');

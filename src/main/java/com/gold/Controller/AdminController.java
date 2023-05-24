@@ -14,9 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class AdminController {
@@ -216,6 +221,53 @@ public class AdminController {
         return "redirect:/admin/changeProduct";
     }
 
+    /* 첨부 파일 업로드 */
+    @PostMapping("/admin/uploadAjaxAction")
+    public void uploadAjaxActionPOST(MultipartFile[] uploadFile) {
+
+        logger.info("uploadAjaxActionPOST..........");
+        //업로드 폴더 지정
+        String uploadFolder = "C:\\projects\\Shopping_Page\\src\\main\\webapp\\WEB-INF\\img";
+        //날짜를 지정된 형식의 문자열 데이터로 생성하기 위해서 사용
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //오늘의 날짜 데이터를 얻기 위해서 Date 클래스 타입의 변수를 선언 및 초기화
+        Date date = new Date();
+        //"yyyy-MM-dd" 형식의 문자열로 변환
+        String str = simpleDateFormat.format(date);
+        //str 변수의 값의 문자열 중 '-'을 File.separator로 변경
+        String datePath = str.replace("-", File.separator);
+        //디렉터리를 대상으로 하는 File 객체로 초기화
+        File uploadPath = new File(uploadFolder, datePath);
+        //폴더가 없을 경우 폴더 생성
+        if(uploadPath.exists() == false) {
+            uploadPath.mkdirs();
+        }
+
+        for(MultipartFile multipartFile:uploadFile){
+
+            /* 파일 이름 */
+            String uploadFileName = multipartFile.getOriginalFilename();
+
+            /* uuid 적용 파일 이름 */
+            String uuid = UUID.randomUUID().toString();
+
+            uploadFileName = uuid + "_" + uploadFileName;
+
+
+            /* 파일 위치, 파일 이름을 합친 File 객체 */
+            File saveFile = new File(uploadPath, uploadFileName);
+
+            /* 파일 저장, IOException와 IllegalStateException을 일으킬 가능성이 있기 때문에 try catch문 사용*/
+            try {
+                multipartFile.transferTo(saveFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
     //회원 관리 페이지
     @GetMapping("/admin/manageUser")
     public String manageUserPage() {
@@ -224,4 +276,6 @@ public class AdminController {
 
         return "admin/manageUser";
     }
+
+
 }

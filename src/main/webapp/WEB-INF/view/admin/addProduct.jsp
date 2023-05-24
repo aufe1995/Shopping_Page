@@ -134,28 +134,46 @@
 
 	/* 이미지 업로드 */
 	$("input[type='file']").on("change", function(e){
+	    /* 폼을 쉽게 보내도록 도와주는 객체 */
+	    let formData = new FormData();
+
+        /* type이 file인 <input> 요소(element) */
 		let fileInput = $('input[name="uploadFile"]');
 		let fileList = fileInput[0].files;
         let fileObj = fileList[0];
 
+        /* 이미지 파일 제한사항 확인 */
         if(!fileCheck(fileObj.name, fileObj.size)){
 			return false;
 		}
 
-		alert("통과");
+        /* FormData 객체에 데이터 추가 */
+		formData.append("uploadFile", fileObj);
+
+        /* AJAX를 사용하여 서버로 전송 */
+		$.ajax({
+        			url: '/admin/uploadAjaxAction',
+        	    	processData : false,
+        	    	contentType : false,
+        	    	data : formData,
+        	    	type : 'POST',
+        	    	dataType : 'json'
+        		});
 	});
 
-	/* var, method related with attachFile */
+	/* 이미지 파일 제한사항 */
 	let regex = new RegExp("(.*?)\.(jpg|png)$");
 	let maxSize = 1048576; //1MB
 
 	function fileCheck(fileName, fileSize){
 
+        /* 이미지 파일 사이즈 확인 */
 		if(fileSize >= maxSize){
 			alert("파일 사이즈 초과");
 			return false;
 		}
 
+        /* 이미지 파일 형식 확인 */
 		if(!regex.test(fileName)){
 			alert("해당 종류의 파일은 업로드할 수 없습니다.");
 			return false;

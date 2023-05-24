@@ -39,7 +39,7 @@ public class UserVo implements UserDetails {
 
         Collection < GrantedAuthority > collectors = new ArrayList<>();
         collectors.add(() -> {
-            return "1";
+            return "application.properties";
         });
 
         return collectors;
